@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  next-feature-smartapp:
+    build: .
+    container_name: next-feature-smartapp
+    environment:
+      - BOT_CREDENTIALS=cts_host@secret_key@bot_id
+      - DEBUG=true
+    ports:
+      - "8000:8000"
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
