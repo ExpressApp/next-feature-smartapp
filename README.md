@@ -1,7 +1,39 @@
-# feature-smartapp
+# next-feature-smartapp
 
-### Installation
+Бот для тестирования функционала BotX
 
-`git clone --recursive https://gitlab.ccsteam.ru/bots/feature-smartapp.git`
+### Установка
+
+1. Воспользуйтесь инструкцией [Руководство администратора](https://express.ms/admin_guide.pdf)
+`-> Эксплуатация корпоративного сервера -> Управление контактами -> Чат-боты`
+2. Создайте бота в панели администратора eXpress.
+3. Получите `secret_key` (Секретный ключ) и `bot_id` (ID) нажав на имя созданного бота.
+4. Получите `cts_host` имя хоста, на котором находится панель администратора.
+5. Установите флаг "Включено" и заполните имя для SmartApp.
+
+6. Скачайте репозиторий на сервер:
+
+```bash
+git clone --recursive https://github.com/ExpressApp/next-feature-smartapp
+```
 
 флаг `--recursive` нужен для клонирования подмодуля botx-smartapp-rpc
+
+7. Заполните переменные окружения в `docker-compose.yml` реальными значениями:
+
+```
+- BOT_CREDENTIALS= 
+```
+
+8. Запустите контейнеры командой:
+
+```bash
+docker-compose up -d
+```
+9. Убедитесь, что в логах нет ошибок.
+
+```bash
+docker-compose logs
+```
+
+10. Выберите текущий SmartApp через меню SmartApp, проверьте что он открылся.
