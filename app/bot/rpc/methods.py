@@ -158,3 +158,9 @@ async def search_users(
         search_results.append(build_user_from_search_text(user))
 
     return RPCResultResponse("\n\n".join(search_results))
+
+
+@rpc.method("encrypted_payload")
+async def encrypted_payload_method(_: SmartApp) -> RPCResultResponse:
+
+    return RPCResultResponse(result={"status": "ok"}, ecnrypted=False)
