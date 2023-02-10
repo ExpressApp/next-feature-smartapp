@@ -1,6 +1,6 @@
 """RPC methods."""
 import asyncio
-from typing import Any, Callable
+from typing import Any, Callable, Dict
 from uuid import UUID
 
 from pybotx_smartapp_rpc import (
@@ -53,8 +53,14 @@ async def menu(smartapp: SmartApp) -> RPCResultResponse[FeatureMenu]:
     name="Echo",
     ui_elements=[ui_elements.text_input],
 )
-async def echo(smartapp: SmartApp, rpc_arguments: EchoArgs) -> RPCResultResponse[str]:
-    return RPCResultResponse(rpc_arguments.text)
+async def echo(smartapp: SmartApp, rpc_arguments: EchoArgs) -> RPCResultResponse[Dict]:
+    return RPCResultResponse(
+        result={
+            "text": rpc_arguments.text,
+            "text_length": len(rpc_arguments.text),
+        },
+        encrypted=False,
+    )
 
 
 class UpdateAppCounterArgs(RPCArgsBaseModel):
