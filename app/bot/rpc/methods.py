@@ -14,7 +14,11 @@ from pybotx_smartapp_rpc import (
 from app.bot.feature_router import FeatureRouter
 from app.schemas.menu import FeatureMenu
 from app.services import ui_elements
-from app.services.answers import build_file_meta_text, build_user_from_search_text
+from app.services.answers import (
+    build_file_meta_text,
+    build_static_image_url,
+    build_user_from_search_text,
+)
 from app.services.botx_user_search import (
     UserIsBotError,
     UserNotFoundError,
@@ -158,3 +162,20 @@ async def search_users(
         search_results.append(build_user_from_search_text(user))
 
     return RPCResultResponse("\n\n".join(search_results))
+
+
+@rpc.feature(
+    "echo_static_file", name="Echo static file", ui_elements=[ui_elements.file_picker]
+)
+async def echo_static_file(smartapp: SmartApp) -> RPCResultResponse[str]:
+    try:
+        async_file = smartapp.event.files[0]
+    except IndexError:
+        raise RPCErrorExc(
+            RPCError(
+                reason="Async files required",
+                id="ASYNC_FILES_REQUIRED",
+            )
+        )
+
+    return RPCResultResponse(await build_static_image_url(async_file, smartapp))
