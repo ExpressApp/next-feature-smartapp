@@ -54,7 +54,7 @@ async def status_handler(request: Request, bot: Bot = bot_dependency) -> JSONRes
 @router.post("/notification/callback")
 async def callback_handler(request: Request, bot: Bot = bot_dependency) -> JSONResponse:
     """Process BotX methods callbacks."""
-    bot.set_raw_botx_method_result(await request.json())
+    await bot.set_raw_botx_method_result(await request.json())
     return JSONResponse(
         build_command_accepted_response(),
         status_code=HTTPStatus.ACCEPTED,

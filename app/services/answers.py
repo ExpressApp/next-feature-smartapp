@@ -1,7 +1,9 @@
 """Answer builders."""
 from typing import Any, Dict
 
-from pybotx import File, UserFromSearch
+from aiofiles.tempfile import SpooledTemporaryFile
+from pybotx import File, Image, UserFromSearch
+from pybotx_smartapp_rpc import SmartApp
 
 from app.services.beautify import beautify_dict
 
@@ -44,3 +46,21 @@ def build_user_from_search_text(user: UserFromSearch) -> str:
         f"Position: **{position}**\n"
         f"Department: **{department}**"
     )
+
+
+async def build_static_image_url(image_file: Image, smartapp: SmartApp) -> str:
+    async with SpooledTemporaryFile() as async_buffer:
+        await smartapp.bot.download_file(
+            bot_id=smartapp.bot_id,
+            chat_id=smartapp.chat_id,
+            file_id=image_file._file_id,
+            async_buffer=async_buffer,
+        )
+
+        link = await smartapp.bot.upload_static_file(
+            bot_id=smartapp.bot_id,
+            filename=image_file.filename,
+            async_buffer=async_buffer,
+        )
+
+    return link

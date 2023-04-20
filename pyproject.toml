@@ -8,10 +8,10 @@ authors = []
 
 
 [tool.poetry.dependencies]
-python = "~3.9"
+python = ">=3.9, <3.11"
 
-pybotx = "~0.38.0"
-pybotx-smartapp-rpc = "~0.4.0"
+pybotx = ">=0.55.0,<0.56"
+pybotx-smartapp-rpc = ">=0.5.6,<0.6.0"
 
 fastapi = "~0.70.0"
 uvicorn = "~0.13.4"
@@ -21,6 +21,7 @@ mako = "~1.1.4"
 python-dotenv = "^0.19.1"
 
 aiofiles = "^0.8.0"
+types-aiofiles = "^23.1.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "~21.6b0"
