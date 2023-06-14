@@ -25,7 +25,7 @@ RUN apt-get update && \
 
 # Poetry can't read password to download private repos
 RUN echo -e "machine ${GIT_HOST}\nlogin ${GIT_LOGIN}\npassword ${GIT_PASSWORD}" > ~/.netrc && \
-    pip install poetry==1.1.6 --no-cache-dir && \
+    pip install poetry==1.5.1 --no-cache-dir && \
     poetry config virtualenvs.create false && \
     poetry install --no-dev && \
     rm -rf /root/.cache/pypoetry && \
