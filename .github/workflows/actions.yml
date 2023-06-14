@@ -15,7 +15,7 @@ jobs:
         uses: ExpressApp/github-actions-poetry@v0.1
         with:
           python-version: "3.10.4"
-          poetry-version: "1.4.0"
+          poetry-version: "1.5.1"
 
       - name: Run lint
         run: |
