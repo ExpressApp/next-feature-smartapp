@@ -1,1 +1,342 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="./favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="./logo192.png"/><link rel="manifest" href="./manifest.json"/><title>React App</title><link href="./static/css/2.d5fd5dce.chunk.css" rel="stylesheet"><link href="./static/css/main.6ea54285.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(e){function r(r){for(var n,a,p=r[0],f=r[1],l=r[2],c=0,s=[];c<p.length;c++)a=p[c],Object.prototype.hasOwnProperty.call(o,a)&&o[a]&&s.push(o[a][0]),o[a]=0;for(n in f)Object.prototype.hasOwnProperty.call(f,n)&&(e[n]=f[n]);for(i&&i(r);s.length;)s.shift()();return u.push.apply(u,l||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,p=1;p<t.length;p++){var f=t[p];0!==o[f]&&(n=!1)}n&&(u.splice(r--,1),e=a(a.s=t[0]))}return e}var n={},o={1:0},u=[];function a(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,a),t.l=!0,t.exports}a.m=e,a.c=n,a.d=function(e,r,t){a.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,r){if(1&r&&(e=a(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(a.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)a.d(t,n,function(r){return e[r]}.bind(null,n));return t},a.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(r,"a",r),r},a.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},a.p="./";var p=this["webpackJsonp@smartapp/feature-smartapp"]=this["webpackJsonp@smartapp/feature-smartapp"]||[],f=p.push.bind(p);p.push=r,p=p.slice();for(var l=0;l<p.length;l++)r(p[l]);var i=f;t()}([])</script><script src="./static/js/2.0a18494c.chunk.js"></script><script src="./static/js/main.41cb0c3e.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
+	<meta name="description" content="A new Flutter project.">
+
+	<!-- iOS meta tags & icons -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="medlike">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="favicon.png" />
+
+	<title>medlike</title>
+	<link rel="manifest" href="manifest.json">
+	<script src="./bundle.js"></script>
+	<script>
+		var bridge = window.webBridgeInstance;
+		var debugCounter = 0;
+		async function setPath(route) {
+			const pathname = window.location.pathname;
+			const hash = window.location.hash;
+			const newPathname = pathname.replace(/\/[^/]*$/, route);
+			const newUrl = window.location.protocol + "//" + window.location.host + newPathname + hash;
+			window.history.pushState({path: newUrl}, '', newUrl);
+		}
+
+		async function sendBotEvent(jsonEventObject, data) {
+			let eventObject = JSON.parse(jsonEventObject);
+			if (data) eventObject.params.body = data;
+			console.log('sendBotEvent start', eventObject);
+			return new Promise((resolve, reject) => {
+				console.log('bridge.sendBotEvent(eventObject)', eventObject);
+				var index = debugCounter;
+				debugCounter++;
+				console.log('bridge.sendBotEvent(index)', index);
+				console.log('bridge.sendBotEvent(timestamp)', Date.now());
+				bridge.sendBotEvent(eventObject)
+					.then((res) => {
+						console.log('bridge.sendBotEvent method success', res);
+						try {
+							console.log('bridge.sendBotEvent success:', res);
+							console.log('bridge.sendBotEvent success(index)', index);
+							console.log('bridge.sendBotEvent success(timestamp)', Date.now());
+							resolve(JSON.stringify(res));
+						} catch (err) {
+							console.log('bridge.sendBotEvent error:', res);
+							console.log('bridge.sendBotEvent error(index)', index);
+							console.log('bridge.sendBotEvent error(timestamp)', Date.now());
+							resolve(res);
+						}
+
+					})
+					.catch((err) => {
+						console.log('sending event object: ', eventObject);
+						console.log('bridge.sendBotEvent error', err);
+						console.log('bridge.sendBotEvent error(index)', index);
+						console.log('bridge.sendBotEvent error(timestamp)', Date.now());
+						reject(JSON.stringify(err))
+					})
+			});
+		}
+
+    	async function sendClientEvent(jsonEventObject) {
+			const eventObject = JSON.parse(jsonEventObject);
+			console.log('sendClientEvent start', eventObject);
+			return new Promise((resolve, reject) => {
+				bridge.sendClientEvent(eventObject)
+					.then((res) => {
+						console.log('bridge.sendClientEvent success', res);
+						try {
+							resolve(JSON.stringify(res));
+						} catch (err) {
+							resolve(res);
+						}
+
+					})
+					.catch((err) => {
+						console.log('sending event object: ', eventObject);
+						console.log('bridge.sendClientEvent error', err);
+						reject(JSON.stringify(err))
+					})
+			});
+		}
+
+		bridge?.sendClientEvent({
+			method: 'ready',
+			params: {}
+		}).then((res) => {
+			console.log('bridge.sendClientEvent READY success ', res);
+			route = res?.payload?.openSmartAppMeta?.route;
+			if(route && route != '/#') {
+				setPath(route);
+			}
+			console.log("bridge.sendClientEvent READY value", JSON.stringify(res)); 
+		}).catch((err) => {
+			console.log('bridge.sendClientEvent READY error ', err);
+		});
+
+		bridge?.disableRenameParams();
+	</script>
+
+	<div id="loading">
+		<style>
+			body {
+				inset: 0;
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+				position: fixed;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+			}
+			#loading {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			#loading img {
+				width: 90px;
+				height: 90px;
+    		}
+			#loading.main_done img {
+				opacity: 1;
+			}
+			#loading.init_done img {
+				opacity: 0.05;
+			}
+		</style>
+		<img src="./icons/Icon-512-filled.png" alt="Loading..."/>
+	</div>
+	<!--
+	<script>
+		function base64Encode(buf) {
+			let string = '';
+			(new Uint8Array(buf)).forEach(
+				(byte) => { string += String.fromCharCode(byte) }
+			)
+			return btoa(string)
+		}
+
+		function wait(ms){
+			var start = new Date().getTime();
+			var end = start;
+			while(end < start + ms) {
+				end = new Date().getTime();
+			}
+		}
+
+		async function postData(url = '', data = {}, headers = {}, method = 'GET') {
+			// Default options are marked with *
+			let response;
+			switch (true) {
+				case method === 'GET':
+					response = await fetch(url, {
+						method: method, // GET
+						cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+						credentials: 'same-origin', // include, *same-origin, omit
+						headers: headers,
+						redirect: 'follow', // manual, *follow, error
+						referrerPolicy: 'no-referrer', // no-referrer, *client
+					});
+					return response;
+					break;
+				case method === 'GET_IMAGE':
+					response = await fetch(url, {
+						method: 'GET', // *GET_IMAGES
+						cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+						credentials: 'same-origin', // include, *same-origin, omit
+						headers: headers,
+						redirect: 'follow', // manual, *follow, error
+						referrerPolicy: 'no-referrer', // no-referrer, *client
+					});
+					/*
+					let text = base64Encode(await response.arrayBuffer());
+					return text;
+					*/
+					return response;
+					break;
+
+				default:
+					response = await fetch(url, {
+						method: method, // POST, PUT, DELETE, etc.
+						cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+						credentials: 'same-origin', // include, *same-origin, omit
+						headers: headers,
+						redirect: 'follow', // manual, *follow, error
+						referrerPolicy: 'no-referrer', // no-referrer, *client
+						body: JSON.stringify(data) // body data type must match "Content-Type" header
+					});
+					return response;
+					break;
+			}
+		}
+
+		async function sendBotEvent(jsonEventObject, data) {
+			// console.log('!!!!!!!!!!!!!!!, files', data);
+			// console.log('@@@@@@', data instanceof FormData);
+			// console.log('#####3', typeof data);
+			// const eventObject = JSON.parse(jsonEventObject);
+			let eventObject = JSON.parse(jsonEventObject);
+			if (data) eventObject.params.body = data;
+			console.log('sendBotEvent start', eventObject);
+			return new Promise((resolve, reject) => {
+			console.log('!!!!!!!!!!!!!!!!!!!!!!!!');
+			console.log(eventObject);
+				postData(eventObject.params.url, eventObject.params.body, eventObject.params.headers, eventObject.params.method)
+					.then(async (res) => {
+						const text = await res.text()
+						switch (true) {
+							case eventObject.params.method === 'GET_IMAGE':
+								resolve(text);
+								break;
+							case eventObject.params.method === 'GET_STATIC':
+								resolve(text);
+								break;
+
+							default:
+								resolve(JSON.stringify({
+									ref: '_',
+									type: 'smartapp_rpc',
+									files: [],
+									payload: {
+										status: 'ok',
+										result: {
+											status: 'success',
+											code: +res.status,
+											content: text,
+										}
+									}
+								}));
+								break;
+						}
+
+					})
+					.catch((err) => {
+						console.log('Ошибка на этапо запроса к боту. Содержимое ошибки ниже')
+						console.log(err);
+						reject(JSON.stringify(err));
+					})
+			});
+		}
+	</script> 
+	-->
+
+	<script>
+		window.flutterConfiguration = {
+			canvasKitBaseUrl: "./canvaskit/"
+		};
+	</script>
+	<!--    <script src="./flutter.js" defer></script>-->
+</head>
+
+<body>
+	<!-- This script installs service_worker.js to provide PWA functionality to
+     application. For more information, see:
+     https://developers.google.com/web/fundamentals/primers/service-workers -->
+	<script>
+		var serviceWorkerVersion = '4115758289';
+		var scriptLoaded = false;
+		function loadMainDartJs() {
+			if (scriptLoaded) {
+				return;
+			}
+			scriptLoaded = true;
+			var scriptTag = document.createElement('script');
+			scriptTag.src = './main.dart.js';
+			scriptTag.type = 'application/javascript';
+			document.body.append(scriptTag);
+			/*
+			var loading = document.querySelector("#loading");
+			loading.classList.add("main_done");
+			window.setTimeout(function () {
+				loading.remove();
+			}, 200);
+			*/
+		}
+
+		if ('serviceWorker' in navigator) {
+			// Service workers are supported. Use them.
+			window.addEventListener('load', function () {
+				// Wait for registration to finish before dropping the <script> tag.
+				// Otherwise, the browser will load the script multiple times,
+				// potentially different versions.
+				var serviceWorkerUrl = './flutter_service_worker.js?v=' + serviceWorkerVersion;
+				navigator.serviceWorker.register(serviceWorkerUrl)
+					.then((reg) => {
+						function waitForActivation(serviceWorker) {
+							serviceWorker.addEventListener('statechange', () => {
+								if (serviceWorker.state == 'activated') {
+									console.log('Installed new service worker.');
+									loadMainDartJs();
+								}
+							});
+						}
+						if (!reg.active && (reg.installing || reg.waiting)) {
+							// No active web worker and we have installed or are installing
+							// one for the first time. Simply wait for it to activate.
+							waitForActivation(reg.installing || reg.waiting);
+						} else if (!reg.active.scriptURL.endsWith(serviceWorkerVersion)) {
+							// When the app updates the serviceWorkerVersion changes, so we
+							// need to ask the service worker to update.
+							console.log('New service worker available.');
+							reg.update();
+							waitForActivation(reg.installing);
+						} else {
+							// Existing service worker is still good.
+							console.log('Loading app from service worker.');
+							loadMainDartJs();
+						}
+					});
+
+				// If service worker doesn't succeed in a reasonable amount of time,
+				// fallback to plaint <script> tag.
+				setTimeout(() => {
+					if (!scriptLoaded) {
+						console.warn(
+							'Failed to load app from service worker. Falling back to plain <script> tag.',
+						);
+						loadMainDartJs();
+					}
+				}, 4000);
+			});
+		} else {
+			// Service workers not supported. Just drop the <script> tag.
+			loadMainDartJs();
+		}
+
+	</script>
+</body>
+
+</html>
