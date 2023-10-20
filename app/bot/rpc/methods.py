@@ -1,6 +1,7 @@
 """RPC methods."""
 import asyncio
-from typing import Any, Callable
+import json
+from typing import Any, Callable, Dict
 from uuid import UUID
 
 from pybotx_smartapp_rpc import (
@@ -10,6 +11,7 @@ from pybotx_smartapp_rpc import (
     RPCResultResponse,
     SmartApp,
 )
+from pydantic import Field, validator
 
 from app.bot.feature_router import FeatureRouter
 from app.schemas.menu import FeatureMenu
@@ -88,6 +90,45 @@ async def send_push(
         )
     )
     return RPCResultResponse(f"Notification will be sent in {rpc_arguments.delay} sec")
+
+
+class SendPushArgs(RPCArgsBaseModel):
+    title: str
+    body: str
+    meta: Dict[str, Any] = Field(default_factory=dict)
+    delay: float
+
+    @validator("meta", pre=True)
+    @classmethod
+    def parse_configuration(cls, value: Any) -> Dict[str, Any]:  # noqa: WPS110
+        if isinstance(value, str):
+            return json.loads(value)
+        return value
+
+
+@rpc.feature(
+    "send_custom_push",
+    name="Send custom push",
+    ui_elements=[
+        ui_elements.title_input,
+        ui_elements.body_input,
+        ui_elements.meta_input,
+        ui_elements.delay_input,
+    ],
+)
+async def send_custom_push(
+    smartapp: SmartApp, rpc_arguments: SendPushArgs
+) -> RPCResultResponse[str]:
+    asyncio.create_task(
+        call_with_delay(
+            rpc_arguments.delay,
+            smartapp.send_custom_push,
+            rpc_arguments.title,
+            rpc_arguments.body,
+            rpc_arguments.meta,
+        )
+    )
+    return RPCResultResponse(f"Push will be sent in {rpc_arguments.delay} sec")
 
 
 class SendNotificationArgs(RPCArgsBaseModel):
