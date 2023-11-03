@@ -799,13 +799,13 @@ flake8-polyfill = ">=1.0.2,<2"
 
 [[package]]
 name = "pybotx"
-version = "0.60.0"
+version = "0.60.1"
 description = "A python library for interacting with eXpress BotX API"
 optional = false
 python-versions = ">=3.8,<3.12"
 files = [
-    {file = "pybotx-0.60.0-py3-none-any.whl", hash = "sha256:564e4882f449a390ba45fc6e7c3649319d461ee0ea0c652cee29881204745793"},
-    {file = "pybotx-0.60.0.tar.gz", hash = "sha256:cffbea9e3d522a3113331e9d381f7972fee80052fb5ac053c330cf55c92265f1"},
+    {file = "pybotx-0.60.1-py3-none-any.whl", hash = "sha256:2b23828f642ba3392335b640f5e15e4c156423cd34595f4dc5b8dd8403dc595b"},
+    {file = "pybotx-0.60.1.tar.gz", hash = "sha256:10beb702a4d2f2a45a348e403e7cefa50856f1ac985ac0b1febc67395cdeff39"},
 ]
 
 [package.dependencies]
