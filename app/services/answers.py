@@ -2,7 +2,7 @@
 from typing import Any, Dict
 
 from aiofiles.tempfile import SpooledTemporaryFile
-from pybotx import File, Image, UserFromSearch
+from pybotx import File, Image, IncomingMessage, UserFromSearch
 from pybotx_smartapp_rpc import SmartApp
 
 from app.services.beautify import beautify_dict
@@ -64,3 +64,11 @@ async def build_static_image_url(image_file: Image, smartapp: SmartApp) -> str:
         )
 
     return link
+
+
+def build_incoming_command_text(message: IncomingMessage) -> str:
+    return (
+        f"Incoming command:\n\n"
+        f"body:\n```\n{message.body}\n```\n\n"
+        f"data:\n```\n{beautify_dict(message.data)}\n```"
+    )
