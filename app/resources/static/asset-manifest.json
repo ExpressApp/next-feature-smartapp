@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "./static/css/main.0c4b7cf6.chunk.css",
-    "main.js": "./static/js/main.02178e80.chunk.js",
-    "main.js.map": "./static/js/main.02178e80.chunk.js.map",
+    "main.css": "./static/css/main.160ce0ca.chunk.css",
+    "main.js": "./static/js/main.81379c47.chunk.js",
+    "main.js.map": "./static/js/main.81379c47.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.950b9ff0.js",
     "runtime-main.js.map": "./static/js/runtime-main.950b9ff0.js.map",
     "static/css/2.8ed87043.chunk.css": "./static/css/2.8ed87043.chunk.css",
-    "static/js/2.6127506c.chunk.js": "./static/js/2.6127506c.chunk.js",
-    "static/js/2.6127506c.chunk.js.map": "./static/js/2.6127506c.chunk.js.map",
-    "bundle-1.1.37.zip": "./bundle-1.1.37.zip",
+    "static/js/2.863a4c50.chunk.js": "./static/js/2.863a4c50.chunk.js",
+    "static/js/2.863a4c50.chunk.js.map": "./static/js/2.863a4c50.chunk.js.map",
+    "bundle-1.2.4.zip": "./bundle-1.2.4.zip",
     "index.html": "./index.html",
     "smartapp-manifest.json": "./smartapp-manifest.json",
     "static/css/2.8ed87043.chunk.css.map": "./static/css/2.8ed87043.chunk.css.map",
-    "static/css/main.0c4b7cf6.chunk.css.map": "./static/css/main.0c4b7cf6.chunk.css.map",
-    "static/js/2.6127506c.chunk.js.LICENSE.txt": "./static/js/2.6127506c.chunk.js.LICENSE.txt",
+    "static/css/main.160ce0ca.chunk.css.map": "./static/css/main.160ce0ca.chunk.css.map",
+    "static/js/2.863a4c50.chunk.js.LICENSE.txt": "./static/js/2.863a4c50.chunk.js.LICENSE.txt",
     "static/media/arrow-left.fa74ab51.svg": "./static/media/arrow-left.fa74ab51.svg",
     "static/media/botx-icon.cf9274ad.svg": "./static/media/botx-icon.cf9274ad.svg",
     "static/media/clear-input.6a69fb5e.svg": "./static/media/clear-input.6a69fb5e.svg",
@@ -26,8 +26,8 @@
   "entrypoints": [
     "static/js/runtime-main.950b9ff0.js",
     "static/css/2.8ed87043.chunk.css",
-    "static/js/2.6127506c.chunk.js",
-    "static/css/main.0c4b7cf6.chunk.css",
-    "static/js/main.02178e80.chunk.js"
+    "static/js/2.863a4c50.chunk.js",
+    "static/css/main.160ce0ca.chunk.css",
+    "static/js/main.81379c47.chunk.js"
   ]
 }
