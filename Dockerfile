@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM registry.ccsteam.ru/bots-cicd-images/python:3.11.5-slim
 
 ENV PYTHONUNBUFFERED 1
 ENV UVICORN_CMD_ARGS ""
