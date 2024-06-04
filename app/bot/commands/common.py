@@ -13,16 +13,8 @@ from pybotx import (
 )
 
 from app.resources import strings
-from app.services.answers import build_incoming_command_text
 
 collector = HandlerCollector()
-
-
-@collector.default_message_handler
-async def default_handler(message: IncomingMessage, bot: Bot) -> None:
-    """Show bot command data."""
-    if isinstance(message.data, dict) and message.data.get("command") is not None:
-        await bot.answer_message(build_incoming_command_text(message))
 
 
 @collector.smartapp_event

@@ -3,7 +3,6 @@
 from http import HTTPStatus
 
 from fastapi import APIRouter, Request
-from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pybotx import (
     Bot,
@@ -11,14 +10,8 @@ from pybotx import (
     build_bot_disabled_response,
     build_command_accepted_response,
 )
-from pybotx_smartapp_rpc import SmartApp
-from pybotx_smartapp_rpc.models.request import RPCRequest
 
 from app.api.dependencies.bot import bot_dependency
-from app.schemas.sync_request import (
-    SyncRequest,
-    transfrorm_sync_request_to_smartapp_event,
-)
 from app.logger import logger
 
 router = APIRouter()
@@ -66,23 +59,3 @@ async def callback_handler(request: Request, bot: Bot = bot_dependency) -> JSONR
         build_command_accepted_response(),
         status_code=HTTPStatus.ACCEPTED,
     )
-
-
-@router.post("/smartapps/request")
-async def sync_request_handler(
-    request: SyncRequest, bot: Bot = bot_dependency
-) -> JSONResponse:
-    smartapp_event = transfrorm_sync_request_to_smartapp_event(request, bot)
-    smartapp = SmartApp(
-        bot, smartapp_event.bot.id, smartapp_event.chat.id, smartapp_event
-    )
-    rpc_request = RPCRequest(**smartapp_event.data)
-
-    rpc_response = (
-        await bot.state.smartapp_rpc._router.perform_rpc_request(  # noqa: WPS437
-            smartapp, rpc_request
-        )
-    )
-
-    json = jsonable_encoder(rpc_response.jsonable_dict())
-    return JSONResponse(json)
