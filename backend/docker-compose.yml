@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  next-feature-smartapp:
+    build: .
+    container_name: next-feature-smartapp
+    env_file: ".env"
+    ports:
+      - "8000:8000"
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"

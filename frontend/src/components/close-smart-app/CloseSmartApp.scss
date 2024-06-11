@@ -1,0 +1,10 @@
+@import "../../constants";
+
+.close-smart-app {
+  padding: 8px;
+  border: 1px solid $grey;
+
+  &__title {
+    margin: 0
+  }
+}

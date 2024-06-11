@@ -1,14 +1,33 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-NETRC_FILE=~/.netrc
-CI_COMMIT_SHA=$(git rev-parse --verify HEAD)
-GIT_HOST=$(grep machine ${NETRC_FILE} | awk '{ print $2 }')
-GIT_LOGIN=$(grep login ${NETRC_FILE} | awk '{ print $2 }')
-GIT_PASSWORD=$(grep password ${NETRC_FILE} | awk '{ print $2 }')
-BOT_PROJECT_NAME=$(basename $(pwd))
-docker build \
-    --build-arg GIT_HOST=${GIT_HOST} \
-    --build-arg GIT_PASSWORD=${GIT_PASSWORD} \
-    --build-arg GIT_LOGIN=${GIT_LOGIN} \
-    --build-arg CI_COMMIT_SHA=${CI_COMMIT_SHA} \
-    -t registry.ccsteam.ru/bots/${BOT_PROJECT_NAME} .
+NAME="smartapp"
+
+function buildFront() {
+  cd frontend && \
+  npm i && \
+  npm run build && \
+  cd ..
+  
+  return $?
+}
+
+function moveFrontBuildToBack() {
+  rm -rf ./backend/app/resources/static && \
+  mv ./frontend/build ./backend/app/resources/static
+
+  return $?
+}
+
+function buildBack() {
+  REV="$(git rev-parse --short HEAD)"
+  VER="$(cat ./frontend/package.json | grep "version" | grep -Eo "\d+[^\"]+")"
+  TAG="${NAME}-${VER}-${REV}"
+
+  docker build -t $TAG ./backend/ && \
+  printf "DOCKER IMAGE TAG\n======================\n$TAG\n======================\n"
+
+  return $?
+}
+
+
+buildFront && moveFrontBuildToBack && buildBack

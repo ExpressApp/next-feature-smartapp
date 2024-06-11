@@ -1,0 +1,13 @@
+.connection-status {
+  display: block;
+  font-size: 14px;
+  color: #999;
+
+  &--connected {
+    color: #009700;
+  }
+
+  &--disconnected {
+    color: #ab0000;
+  }
+}

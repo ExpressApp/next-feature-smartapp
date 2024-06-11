@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cd frontend && node --openssl-legacy-provider scripts/start.js

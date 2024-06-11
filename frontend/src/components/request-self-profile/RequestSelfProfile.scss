@@ -1,0 +1,14 @@
+@import "../../constants";
+
+.request-self-profile {
+  padding: 8px;
+  border: 1px solid $grey;
+
+  &__title {
+    margin: 0
+  }
+
+  &__json-viewer {
+    margin-top: 16px;
+  }
+}

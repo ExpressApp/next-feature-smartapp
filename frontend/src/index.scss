@@ -1,0 +1,12 @@
+@import './constants';
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: OpenSans,-apple-system, BlinkMacSystemFont, Helvetica Neue, sans-serif;
+}
+
+body {
+  background-color: var(--body-bg);
+  color: var(--font-color);
+}
