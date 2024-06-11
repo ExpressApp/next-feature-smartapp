@@ -11,16 +11,16 @@ export class HighloadTester {
     const tsStart = new Date().getTime()
     this.totalRequestCount++
 
-    // Bridge.sendBotEvent({
-    //   ...MENU_EVENT,
-    //   sync_request: true,
-    // })
-    //   .then(() => {
-    //     const tsEnd = new Date().getTime()
-    //     this.totalRequestsTime += tsEnd - tsStart
-    //     this.totalResponseCount++
-    //   })
-    //   .catch(() => {})
+    Bridge.sendBotEvent({
+      ...MENU_EVENT,
+      sync_request: true,
+    })
+      .then(() => {
+        const tsEnd = new Date().getTime()
+        this.totalRequestsTime += tsEnd - tsStart
+        this.totalResponseCount++
+      })
+      .catch(() => {})
   }
 
   stop() {

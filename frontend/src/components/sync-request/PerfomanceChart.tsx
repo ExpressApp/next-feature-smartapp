@@ -70,6 +70,7 @@ function PerfomanceChart({ width, height, data }) {
     })
   }
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useLayoutEffect(() => {
     const root = am5.Root.new('chartdiv')
 
