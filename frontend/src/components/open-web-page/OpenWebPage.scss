@@ -1,0 +1,15 @@
+@import "../../constants";
+
+.open-web-page {
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    color: $blue;
+    padding-top: 8px;
+    padding-bottom: 32px;
+    max-width: 100%;
+    display: block;
+    word-wrap: break-word;
+  }
+}

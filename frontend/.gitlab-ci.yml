@@ -1,0 +1,78 @@
+stages:
+  - styles
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules
+
+styles:
+  stage: styles
+  image: node:16
+  tags:
+    - docker
+    - web_client
+  variables:
+    NODE_ENV: test
+  before_script:
+    - |
+      eval `ssh-agent -s` > /dev/null
+      chmod 600 ${SSH_PRIVATE_KEY}
+      ssh-add ${SSH_PRIVATE_KEY}
+      mkdir -p ~/.ssh
+      echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+    - npm config set -- '//gitlab.ccsteam.ru/api/v4/projects/621/packages/npm/:_authToken' "$CI_JOB_TOKEN"
+    - npm install
+    - node_modules/.bin/eslint ./src
+
+.deploy:web:
+  stage: build
+  image: node:16
+  tags:
+    - docker
+    - web_client
+  artifacts:
+    reports:
+      dotenv: vars.env
+  when: manual
+  before_script:
+    - export SMARTAPP_TAG=$(node -p "require('./package.json').version")
+  script:
+    - npm run build
+    - tar -cvzf build.tgz ./build/
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file build.tgz "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/smartapp.feature-smartapp/${SMARTAPP_TAG}/build.tgz"'
+    - echo "SMARTAPP_TAG=$SMARTAPP_TAG" > vars.env
+    - echo "DEPLOY_ENV=$DEPLOY_ENV" >> vars.env
+
+deploy:web:dev:
+  extends: .deploy:web
+  variables:
+    DEPLOY_ENV: dev
+
+deploy:web:prod:
+  extends: .deploy:web
+  variables:
+    DEPLOY_ENV: prod
+
+
+deploy:bot:dev:
+  stage: deploy
+  variables:
+    SMARTAPP_TAG: $SMARTAPP_TAG
+  needs:
+    - deploy:web:dev
+  trigger:
+    project: bots/next-feature-smartapp
+    branch: dev
+
+deploy:bot:prod:
+  stage: deploy
+  variables:
+    SMARTAPP_TAG: $SMARTAPP_TAG
+  needs:
+    - deploy:web:prod
+  trigger:
+    project: bots/next-feature-smartapp
+    branch: master

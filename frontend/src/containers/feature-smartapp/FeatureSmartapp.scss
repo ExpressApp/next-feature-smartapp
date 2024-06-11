@@ -1,0 +1,73 @@
+@import "../../constants";
+
+.feature-smartapp {
+  margin-bottom: 30px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+
+    &__text {
+      padding-left: 16px;
+      font-size: 24px;
+      color: var(--font-color);
+    }
+
+    &__icon {
+      color: $blue;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+
+    &-item {
+      padding-left: 20px;
+      font-size: 16px;
+      line-height: 36px;
+      text-decoration: none;
+      color: var(--font-color);
+      cursor: pointer;
+
+      &:first-child {
+        padding-top: 20px;
+      }
+
+      &:hover {
+        color: $blue;
+      }
+
+      &:active {
+        color: $light-blue;
+      }
+    }
+
+    &-title {
+      padding: 20px 0 10px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    & .material-icons {
+      position: relative;
+      bottom: -3px;
+      font-size: 18px;
+      padding-right: 8px;
+
+    }
+  }
+
+  .Toastify__toast-container--bottom-left{
+    max-width: 360px;
+    margin-left: 10px;
+
+    .Toastify__toast {
+      margin-bottom: 10px;
+    }
+  }
+}
