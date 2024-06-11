@@ -1,4 +1,4 @@
-name: Python application
+name: Smartapp application
 on: push
 jobs:
 
@@ -20,4 +20,4 @@ jobs:
       - name: Run lint
         run: |
           source .venv/bin/activate
-          ./scripts/lint
+          ./backend/scripts/lint
