@@ -34,7 +34,6 @@ const postcssNormalize = require('postcss-normalize');
 const appPackageJson = require(paths.appPackageJson);
 
 const packageJson = require('../package.json');
-const smartappManifestJson = require('../smartapp-manifest.json');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
@@ -718,9 +717,7 @@ module.exports = function (webpackEnv) {
         },
       }),
       isEnvProduction && new GenerateJsonPlugin('smartapp-manifest.json', {
-        ...smartappManifestJson,
-        smartAppVersion: packageJson.version,
-        bundlePath: `/bundle-${packageJson.version}.zip`,
+        broken: 'manifest',
       }),
       isEnvProduction && new ZipPlugin({
         filename: `bundle-${packageJson.version}.zip`,
