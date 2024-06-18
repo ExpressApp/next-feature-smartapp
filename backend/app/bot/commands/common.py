@@ -10,8 +10,10 @@ from pybotx import (
     IncomingMessage,
     SmartAppEvent,
     StatusRecipient,
+    SyncSmartAppEventResponsePayload,
 )
 
+from app.bot.smartapp import smartapp
 from app.resources import strings
 
 collector = HandlerCollector()
@@ -47,6 +49,13 @@ async def help_handler(message: IncomingMessage, bot: Bot) -> None:
     )
 
     await bot.answer_message(answer_body)
+
+
+@collector.sync_smartapp_event
+async def handle_sync_smartapp_event(
+    event: SmartAppEvent, bot: Bot
+) -> SyncSmartAppEventResponsePayload:
+    return await smartapp.handle_sync_smartapp_event(event, bot)
 
 
 @collector.command("/_debug:git-commit-sha", visible=False)
