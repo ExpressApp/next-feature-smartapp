@@ -4,13 +4,13 @@ from os import environ
 
 from pybotx import (
     Bot,
+    BotAPISyncSmartAppEventResponse,
     BubbleMarkup,
     ChatCreatedEvent,
     HandlerCollector,
     IncomingMessage,
     SmartAppEvent,
     StatusRecipient,
-    SyncSmartAppEventResponsePayload,
 )
 
 from app.bot.smartapp import smartapp
@@ -54,7 +54,7 @@ async def help_handler(message: IncomingMessage, bot: Bot) -> None:
 @collector.sync_smartapp_event
 async def handle_sync_smartapp_event(
     event: SmartAppEvent, bot: Bot
-) -> SyncSmartAppEventResponsePayload:
+) -> BotAPISyncSmartAppEventResponse:
     return await smartapp.handle_sync_smartapp_event(event, bot)
 
 
