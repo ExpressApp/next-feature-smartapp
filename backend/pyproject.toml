@@ -10,8 +10,8 @@ authors = []
 [tool.poetry.dependencies]
 python = ">=3.9, <3.11"
 
-pybotx = ">=0.67.1"
-pybotx-smartapp-rpc = ">=0.9.0"
+pybotx = { git = "https://github.com/ExpressApp/pybotx.git", branch = "fix/am/change-spec-for-sync-smartapp-event" }
+pybotx-smartapp-rpc = { git = "https://github.com/ExpressApp/pybotx-smartapp-rpc.git", branch = "fix/am/change-spec-for-sync-smartapp-event" }
 
 fastapi = "~0.70.0"
 uvicorn = "~0.13.4"
