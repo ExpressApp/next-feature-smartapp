@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "../dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "ES2015",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["webpack-env", "node", "../app/types/window", "../app/types/svg"],
+    "useDefineForClassFields": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "../app/"
+  ]
+}

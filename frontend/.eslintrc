@@ -1,7 +1,0 @@
-{
-  "extends": ["react-app"],
-  "rules": {
-    "semi": [2, "never"],
-    "max-len": [1, 120, { "ignoreStrings": true }]
-  }
-}
