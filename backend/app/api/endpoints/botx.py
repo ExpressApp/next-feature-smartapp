@@ -6,6 +6,7 @@ from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 from pybotx import (
     Bot,
+    BotAPISyncSmartAppEventResultResponse,
     BotXMethodCallbackNotFoundError,
     UnknownBotAccountError,
     UnverifiedRequestError,
@@ -43,7 +44,14 @@ async def sync_smartapp_event_handler(
         await request.json(),
         request_headers=request.headers,
     )
-    return JSONResponse(response.jsonable_dict(), status_code=HTTPStatus.OK)
+
+    status_code = (
+        HTTPStatus.OK
+        if isinstance(response, BotAPISyncSmartAppEventResultResponse)
+        else HTTPStatus.BAD_REQUEST
+    )
+
+    return JSONResponse(response.jsonable_dict(), status_code=status_code)
 
 
 @router.get("/status")
