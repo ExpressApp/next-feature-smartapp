@@ -1,6 +1,6 @@
 {
   "manifestVersion": "1.0.0",
-  "smartAppVersion": "==filled automatically==",
-  "bundlePath": "==filled automatically==",
-  "changeLog": "Нагрузочное тестирование"
+  "smartAppVersion": "",
+  "bundlePath": "",
+  "changeLog": "Новая архитектура SmartApp"
 }
