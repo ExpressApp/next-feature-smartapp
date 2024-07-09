@@ -24,10 +24,10 @@ const AddContactPage: FC = () => {
     <FeaturePage>
       <FeatureHeader name="Добавление контакта в локальную книгу" />
       Телефон
-      <Input onChange={handlePhoneChange} value={phone} id="phone" />
+      <Input onChange={handlePhoneChange} value={phone} id="phone" type="number" />
       Имя
       <Input onChange={handleNameChange} value={name} id="name" />
-      <Button onClick={handleSubmit} id="submit" title="Добавить" icon="person_add" />
+      <Button onClick={handleSubmit} id="submit" title="Добавить" icon="person_add" disabled={!phone || !name} />
       <br />
       {store.response && <JsonViewer data={store.response} id="response" />}
     </FeaturePage>

@@ -4,11 +4,13 @@ import FeatureHeader from '../../components/FeatureHeader'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import FeaturePage from '../../components/FeaturePage'
+import JsonViewer from '../../components/JsonViewer'
+import { observer } from 'mobx-react'
 
 const MaxFileSizePage: FC = () => {
   const { maxFileSizeStore: store } = useStore()
   const [maxSize, setMaxSize] = useState(10_000_000)
-  const [mime, setMime] = useState('*')
+  const [mime, setMime] = useState('')
 
   const handleMaxSizeChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setMaxSize(parseInt(event.target.value, 10))
@@ -27,8 +29,11 @@ const MaxFileSizePage: FC = () => {
       Размер в байтах
       <Input onChange={handleMaxSizeChange} value={maxSize} id="max-size" type="numeric" />
       <Button onClick={handleSubmit} id="submit" title="Прикрепить" />
+      <br />
+      <br />
+      {store.response && <JsonViewer data={store.response} id="response" />}
     </FeaturePage>
   )
 }
 
-export default MaxFileSizePage
+export default observer(MaxFileSizePage)
