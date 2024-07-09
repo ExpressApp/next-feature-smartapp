@@ -36,6 +36,7 @@ import SyncRequestPage from '../sync-request/SyncRequestPage'
 import InitialDataPage from '../initial-data/InitialDataPage'
 import GuaranteedDeliveryPage from '../guaranteed-delivery/GuaranteedDeliveryPage'
 import BotCommandPage from '../bot-command/BotCommandPage'
+import MaxFileSizePage from '../max-file-size/MaxFileSizePage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -98,6 +99,7 @@ const FeaturesListPage = () => {
           <Route path="/layout-type" element={<LayoutTypePage />} />
           <Route path="/initial-data" element={<InitialDataPage />} />
           <Route path="/guaranteed-delivery" element={<GuaranteedDeliveryPage />} />
+          <Route path="/max-file-size" element={<MaxFileSizePage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}

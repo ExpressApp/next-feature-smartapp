@@ -28,6 +28,7 @@ import { ThemeStore } from '../modules/theme/theme.store'
 import { InitialDataStore } from '../modules/initial-data/initial-data.store'
 import { GuaranteedDeliveryStore } from '../modules/guaranteed-delivery/guaranteed-delivery.store'
 import { BotCommandStore } from '../modules/bot-command/bot-command.store'
+import { MaxFileSizeStore } from '../modules/max-file-size/max-file-size.store'
 
 export class RootStore {
   appStore: AppStore
@@ -60,6 +61,7 @@ export class RootStore {
   initialDataStore: InitialDataStore
   guaranteedDeliveryStore: GuaranteedDeliveryStore
   botCommandStore: BotCommandStore
+  maxFileSizeStore: MaxFileSizeStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -92,5 +94,6 @@ export class RootStore {
     this.initialDataStore = new InitialDataStore(this)
     this.guaranteedDeliveryStore = new GuaranteedDeliveryStore(this)
     this.botCommandStore = new BotCommandStore(this)
+    this.maxFileSizeStore = new MaxFileSizeStore(this)
   }
 }

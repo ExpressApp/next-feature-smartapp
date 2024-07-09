@@ -1,0 +1,34 @@
+import React, { FC, useState } from 'react'
+import { useStore } from '../../hooks/useStore'
+import FeatureHeader from '../../components/FeatureHeader'
+import Input from '../../components/Input'
+import Button from '../../components/Button'
+import FeaturePage from '../../components/FeaturePage'
+
+const MaxFileSizePage: FC = () => {
+  const { maxFileSizeStore: store } = useStore()
+  const [maxSize, setMaxSize] = useState(10_000_000)
+  const [mime, setMime] = useState('*')
+
+  const handleMaxSizeChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setMaxSize(parseInt(event.target.value, 10))
+
+  const handleMimeChange = (event: React.ChangeEvent<HTMLInputElement>) => setMime(event.target.value)
+
+  const handleSubmit = () => {
+    store.uploadFile(mime, maxSize)
+  }
+
+  return (
+    <FeaturePage>
+      <FeatureHeader name="Ограничение размера файла" />
+      Mime тип
+      <Input onChange={handleMimeChange} value={mime} id="mime-type" />
+      Размер в байтах
+      <Input onChange={handleMaxSizeChange} value={maxSize} id="max-size" type="numeric" />
+      <Button onClick={handleSubmit} id="submit" title="Прикрепить" />
+    </FeaturePage>
+  )
+}
+
+export default MaxFileSizePage

@@ -147,6 +147,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">settings_overscan</span>
         Размер окна Web
       </StyledLink>
+      <StyledLink to="max-file-size">
+        <span className="material-icons">file_present</span>
+        Ограничение размера файла
+      </StyledLink>
     </>
   )
 }
