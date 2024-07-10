@@ -29,6 +29,7 @@ export default {
     }),
     new ZipPlugin({
       filename: `bundle-${packageJson.version}.zip`,
+      exclude: [/\.map$/]
     }),
   ],
   resolve: {
