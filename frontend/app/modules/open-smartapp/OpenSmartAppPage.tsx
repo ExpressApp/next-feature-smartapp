@@ -20,7 +20,7 @@ const OpenSmartAppPage: FC = () => {
       <FeatureHeader name="Открытие SmartApp" />
       SmartApp ID
       <Input onChange={handleChange} value={appId} id="appId" />
-      <Button onClick={handleSubmit} id="submit" title="Открыть" />
+      <Button onClick={handleSubmit} id="submit" title="Открыть" disabled={!appId} />
     </FeaturePage>
   )
 }
