@@ -37,6 +37,7 @@ import InitialDataPage from '../initial-data/InitialDataPage'
 import GuaranteedDeliveryPage from '../guaranteed-delivery/GuaranteedDeliveryPage'
 import BotCommandPage from '../bot-command/BotCommandPage'
 import MaxFileSizePage from '../max-file-size/MaxFileSizePage'
+import SendBotCommandPage from '../send-bot-command/SendBotCommandPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -100,6 +101,7 @@ const FeaturesListPage = () => {
           <Route path="/initial-data" element={<InitialDataPage />} />
           <Route path="/guaranteed-delivery" element={<GuaranteedDeliveryPage />} />
           <Route path="/max-file-size" element={<MaxFileSizePage />} />
+          <Route path="/send-bot-command" element={<SendBotCommandPage />} />=
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}

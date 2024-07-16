@@ -71,6 +71,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">send</span>
         Отправка сообщения в чат
       </StyledLink>
+      <StyledLink to="send-bot-command">
+        <span className="material-icons">send</span>
+        Отправка команды боту
+      </StyledLink>
       <StyledLink to="open-settings">
         <span className="material-icons">settings</span>
         Открытие экрана настроек

@@ -29,6 +29,7 @@ import { InitialDataStore } from '../modules/initial-data/initial-data.store'
 import { GuaranteedDeliveryStore } from '../modules/guaranteed-delivery/guaranteed-delivery.store'
 import { BotCommandStore } from '../modules/bot-command/bot-command.store'
 import { MaxFileSizeStore } from '../modules/max-file-size/max-file-size.store'
+import { SendBotCommandStore } from '../modules/send-bot-command/send-bot-command.store'
 
 export class RootStore {
   appStore: AppStore
@@ -62,6 +63,7 @@ export class RootStore {
   guaranteedDeliveryStore: GuaranteedDeliveryStore
   botCommandStore: BotCommandStore
   maxFileSizeStore: MaxFileSizeStore
+  sendBotCommandStore: SendBotCommandStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -95,5 +97,6 @@ export class RootStore {
     this.guaranteedDeliveryStore = new GuaranteedDeliveryStore(this)
     this.botCommandStore = new BotCommandStore(this)
     this.maxFileSizeStore = new MaxFileSizeStore(this)
+    this.sendBotCommandStore = new SendBotCommandStore(this)
   }
 }
