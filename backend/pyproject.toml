@@ -10,7 +10,7 @@ authors = []
 [tool.poetry.dependencies]
 python = ">=3.9, <3.11"
 
-pybotx = "0.69.1"
+pybotx = { git = "https://github.com/ExpressApp/pybotx.git", branch = "test/am/disable-direct-notification-body-length-limit" }
 pybotx-smartapp-rpc = "0.11.0"
 
 fastapi = "~0.70.0"

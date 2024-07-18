@@ -854,21 +854,25 @@ version = "0.69.1"
 description = "A python library for interacting with eXpress BotX API"
 category = "main"
 optional = false
-python-versions = "<3.13,>=3.8"
-files = [
-    {file = "pybotx-0.69.1-py3-none-any.whl", hash = "sha256:764f5ec0189d55dc5e72fe7648abdbc256bd581f173b014ca3c2b16364ba900d"},
-    {file = "pybotx-0.69.1.tar.gz", hash = "sha256:1d29e4310ac92245c22fd305ecfea34e1d961ef5953a5a41a95f961ff1360288"},
-]
+python-versions = ">=3.8,<3.13"
+files = []
+develop = false
 
 [package.dependencies]
 aiocsv = ">=1.2.3,<1.3.0"
 aiofiles = ">=0.7.0,<24.0.0"
 httpcore = ">=1.0.0,<1.0.3"
-httpx = ">=0.25.0,<0.26.0"
+httpx = "^0.25.0"
 loguru = ">=0.6.0,<0.7.0"
 mypy-extensions = ">=0.2.0,<0.5.0"
 pydantic = ">=1.6.0,<1.11.0"
 pyjwt = ">=2.0.0,<3.0.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/ExpressApp/pybotx.git"
+reference = "test/am/disable-direct-notification-body-length-limit"
+resolved_reference = "67740ec9575fe100809d3cad14aaa6876bf0f6eb"
 
 [[package]]
 name = "pybotx-smartapp-rpc"
@@ -1383,4 +1387,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9, <3.11"
-content-hash = "5e8b8d60c5bb8c0875f153e57f9ccccb089eda520d7ea85aa004aecd4238347b"
+content-hash = "cd44fb128afd60465545b9197c10a0c0c3782bb54bec9a5ac118f5b0cc2ad52e"
