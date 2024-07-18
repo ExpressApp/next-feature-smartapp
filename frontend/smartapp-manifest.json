@@ -2,5 +2,5 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Исправление масштаба на мобильных"
+  "changeLog": "Исправление ограничений 4к на событие"
 }
