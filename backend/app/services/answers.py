@@ -9,15 +9,18 @@ from app.services.beautify import beautify_dict
 
 
 def build_incoming_smartapp_event_text(event: Dict[str, Any]) -> str:
-    return f"Incoming:\n```{beautify_dict(event)}```"
+    json = beautify_dict(event)[:3000]
+    return f"Incoming:\n```{json}```"
 
 
 def build_outgoing_smartapp_event_text(event: Dict[str, Any]) -> str:
-    return f"Outgoing:\n```{beautify_dict(event)}```"
+    json = beautify_dict(event)[:3000]
+    return f"Outgoing:\n```{json}```"
 
 
 def build_smartapp_notification_text(event: Dict[str, Any]) -> str:
-    return f"Event:\n```{beautify_dict(event)}```"
+    json = beautify_dict(event)[:3000]
+    return f"Event:\n```{json}```"
 
 
 def build_file_meta_text(meta_file: File) -> str:
