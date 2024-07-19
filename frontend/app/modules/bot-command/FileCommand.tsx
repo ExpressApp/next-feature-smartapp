@@ -1,11 +1,12 @@
 import React, { FC, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
+import styled from 'styled-components'
 import { useStore } from '../../hooks/useStore'
 import { BotCommandPageProps } from './bot-command.types'
 import Button from '../../components/Button'
 import RemoveIcon from '../../assets/clear-input.svg'
 import JsonViewer from '../../components/JsonViewer'
-import styled from 'styled-components'
+import MainLoader from '../../components/MainLoader'
 
 const FileDiv = styled.div`
   display: flex;
@@ -80,6 +81,7 @@ const FileCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
       <br />
       <br />
       {store.response && <JsonViewer data={store.response} id="response" />}
+      {store.isLoading && <MainLoader />}
     </>
   )
 }

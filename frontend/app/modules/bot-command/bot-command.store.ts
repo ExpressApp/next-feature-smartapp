@@ -9,6 +9,7 @@ export class BotCommandStore {
   response: object | null
   files: FileData[]
   filesResponse: FileTextResponse[]
+  isLoading: boolean
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this)
@@ -17,6 +18,7 @@ export class BotCommandStore {
     this.response = null
     this.files = []
     this.filesResponse = []
+    this.isLoading = false
   }
 
   async sendTextAppEvent(method: string, formData: object): Promise<void> {
@@ -97,10 +99,13 @@ export class BotCommandStore {
 
   async sendFileAppEvent(method: string): Promise<void> {
     try {
+      runInAction(() => (this.isLoading = true))
+
       const response = (await SDK.Bridge?.sendBotEvent({
         method,
         params: { type: '' },
         files: this.files,
+        timeout: 60000,
       })) as StatusResponse
 
       if (response.payload.status === STATUS.ERROR) {
@@ -115,6 +120,8 @@ export class BotCommandStore {
       })
     } catch (e) {
       this.rootStore.toastStore.showToast(`Ошибка при отправке команды с файлами ${e?.message}`)
+    } finally {
+      runInAction(() => (this.isLoading = false))
     }
   }
 }
