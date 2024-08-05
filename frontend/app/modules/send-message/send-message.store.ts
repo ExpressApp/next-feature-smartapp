@@ -14,8 +14,10 @@ export class SendMessageStore {
     this.response = null
   }
 
-  async sendMessage(messageBody: string, groupChatId: string, userHuid: string): Promise<void> {
+  async sendMessage(messageBody: string, groupChatId: string, userHuidRaw: string): Promise<void> {
     try {
+      const userHuid = !userHuidRaw ? null : userHuidRaw
+
       const response = (await SDK.sendMessage({ messageBody, groupChatId, userHuid })) as StatusResponse
 
       if (response.payload.status === STATUS.ERROR) {

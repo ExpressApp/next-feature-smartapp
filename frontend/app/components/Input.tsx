@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import Icon from '../assets/clear-input.svg'
 
 const InputStyled = styled.input.attrs({ className: 'input' })`
   padding: 12px 20px;
@@ -13,6 +14,13 @@ const InputStyled = styled.input.attrs({ className: 'input' })`
   background-color: var(--input-bg);
 `
 
+const CloseIcon = styled(Icon)`
+  position: absolute;
+  transform: translate(-150%, 102%);
+  color: #767676;
+  cursor: pointer;
+`
+
 type Props = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   id?: string
@@ -22,7 +30,22 @@ type Props = {
 }
 
 const Input: FC<Props> = props => {
-  return <InputStyled {...props} />
+  const handleClear = () => {
+    const event = {
+      target: {
+        value: '',
+      },
+    } as React.ChangeEvent<HTMLInputElement>
+
+    props.onChange?.(event)
+  }
+
+  return (
+    <>
+      <InputStyled {...props} />
+      {!props.type && props.value && <CloseIcon onClick={handleClear} id={`${props.id}.field-clear`} />}
+    </>
+  )
 }
 
 export default Input
