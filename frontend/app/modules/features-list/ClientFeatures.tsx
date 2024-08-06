@@ -155,6 +155,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">file_present</span>
         Ограничение размера файла
       </StyledLink>
+      <StyledLink to="hide-log-data">
+        <span className="material-icons">text_snippet</span>
+        Скрытие данных в логах
+      </StyledLink>
     </>
   )
 }

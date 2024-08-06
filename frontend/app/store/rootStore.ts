@@ -30,6 +30,7 @@ import { GuaranteedDeliveryStore } from '../modules/guaranteed-delivery/guarante
 import { BotCommandStore } from '../modules/bot-command/bot-command.store'
 import { MaxFileSizeStore } from '../modules/max-file-size/max-file-size.store'
 import { SendBotCommandStore } from '../modules/send-bot-command/send-bot-command.store'
+import { HideLogsStore } from '../modules/hide-logs/hide-logs.store'
 
 export class RootStore {
   appStore: AppStore
@@ -64,6 +65,7 @@ export class RootStore {
   botCommandStore: BotCommandStore
   maxFileSizeStore: MaxFileSizeStore
   sendBotCommandStore: SendBotCommandStore
+  hideLogsStore: HideLogsStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -98,5 +100,6 @@ export class RootStore {
     this.botCommandStore = new BotCommandStore(this)
     this.maxFileSizeStore = new MaxFileSizeStore(this)
     this.sendBotCommandStore = new SendBotCommandStore(this)
+    this.hideLogsStore = new HideLogsStore(this)
   }
 }

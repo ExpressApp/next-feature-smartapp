@@ -1151,21 +1151,21 @@
   resolved "https://registry.yarnpkg.com/@eslint/object-schema/-/object-schema-2.1.4.tgz#9e69f8bb4031e11df79e03db09f9dbbae1740843"
   integrity sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==
 
-"@expressms/smartapp-bridge@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@expressms/smartapp-bridge/-/smartapp-bridge-1.3.0.tgz#4f5b03729a0256e7e465eb486114c9d2db8a274d"
-  integrity sha512-7+bz41y6m3owXNweiz4RTR3TP2VbancEwUBXCPtJEJy1F0xrEOV7D0bBMMv50iSeX5HZNzrfFe3H2kyNZbeMeQ==
+"@expressms/smartapp-bridge@1.4.0-alpha.1":
+  version "1.4.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@expressms/smartapp-bridge/-/smartapp-bridge-1.4.0-alpha.1.tgz#bf1d01672dd06dbbaae5dfd12ee7da54c261cbb6"
+  integrity sha512-uF6utb/okn9xZx9uIpIvePn4PP47uI5vgySocvC4QGENTdUNdGako/GgAD862do43AZlFxppPtKpkNtPgxpjWA==
   dependencies:
     eventemitter3 "^4.0.7"
     lodash-es "^4.17.21"
     uuid "^8.3.2"
 
-"@expressms/smartapp-sdk@1.9.0-alpha.1":
-  version "1.9.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@expressms/smartapp-sdk/-/smartapp-sdk-1.9.0-alpha.1.tgz#b4f9bdf3dba9cf3102d49ca7a1e6d587feeeae95"
-  integrity sha512-NQE7uaQWDCIpTEhvAZrAXzg7r65Ug7RX8rx5kYB+smVUJ7Q2iYkQoHPLKgiQNzgfUz3XG0EOFrXht//OmNcSuA==
+"@expressms/smartapp-sdk@1.10.0-alpha.1":
+  version "1.10.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@expressms/smartapp-sdk/-/smartapp-sdk-1.10.0-alpha.1.tgz#b4eba2a5b68529a0c64b106839543a40a6282007"
+  integrity sha512-ykvx75XDGJKxodEezO+3iJTJy8EE0fzehKRx7DY8geg3J8Mr9OdZCTk52X0phgMw08F4jCogsU1UVQzYdYvUrQ==
   dependencies:
-    "@expressms/smartapp-bridge" "1.3.0"
+    "@expressms/smartapp-bridge" "1.4.0-alpha.1"
 
 "@foliojs-fork/fontkit@^1.9.1":
   version "1.9.2"

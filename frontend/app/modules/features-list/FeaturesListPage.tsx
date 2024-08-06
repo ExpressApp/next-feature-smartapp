@@ -38,6 +38,7 @@ import GuaranteedDeliveryPage from '../guaranteed-delivery/GuaranteedDeliveryPag
 import BotCommandPage from '../bot-command/BotCommandPage'
 import MaxFileSizePage from '../max-file-size/MaxFileSizePage'
 import SendBotCommandPage from '../send-bot-command/SendBotCommandPage'
+import HideLogsPage from '../hide-logs/HideLogsPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -101,7 +102,8 @@ const FeaturesListPage = () => {
           <Route path="/initial-data" element={<InitialDataPage />} />
           <Route path="/guaranteed-delivery" element={<GuaranteedDeliveryPage />} />
           <Route path="/max-file-size" element={<MaxFileSizePage />} />
-          <Route path="/send-bot-command" element={<SendBotCommandPage />} />=
+          <Route path="/send-bot-command" element={<SendBotCommandPage />} />
+          <Route path="/hide-log-data" element={<HideLogsPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}
