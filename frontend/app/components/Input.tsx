@@ -16,9 +16,14 @@ const InputStyled = styled.input.attrs({ className: 'input' })`
 
 const CloseIcon = styled(Icon)`
   position: absolute;
-  transform: translate(-150%, 102%);
-  color: #767676;
+  color: var(--light-grey);
+  width: 24px;
+  height: 24px;
+  max-width: 24px;
+  max-height: 24px;
   cursor: pointer;
+  margin-left: -32px;
+  margin-top: 18px;
 `
 
 type Props = {
