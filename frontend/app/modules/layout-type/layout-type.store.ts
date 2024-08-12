@@ -1,18 +1,20 @@
 import * as SDK from '@expressms/smartapp-sdk'
-import { makeAutoObservable, runInAction } from 'mobx'
+import { makeAutoObservable, makeObservable, observable, runInAction } from 'mobx'
 import { RootStore } from '../../store/rootStore'
 import { GetLayoutTypeResponse, STATUS, SubscriptionEventType } from '@expressms/smartapp-sdk/build/main/types'
 import { LayoutSubscriptionEvent } from './layout-type.types'
 
 export class LayoutTypeStore {
   rootStore: RootStore
-  layoutType: string
+  @observable layoutType: string
+  callback: Function
 
   constructor(rootStore: RootStore) {
-    makeAutoObservable(this)
+    makeObservable(this)
 
     this.rootStore = rootStore
     this.layoutType = ''
+    this.callback = this.layoutTypeCallback.bind(this)
   }
 
   private layoutTypeCallback(event: LayoutSubscriptionEvent) {
@@ -39,7 +41,7 @@ export class LayoutTypeStore {
   async subscribeLayoutTypeChange() {
     await SDK.subscribeClientEvents({
       eventType: SubscriptionEventType.LAYOUT_TYPE,
-      callback: this.layoutTypeCallback.bind(this),
+      callback: this.callback,
     })
 
     console.log('Subscribed layout_type')
@@ -48,7 +50,9 @@ export class LayoutTypeStore {
   async unsubscribeLayoutTypeChange() {
     await SDK.unsubscribeClientEvents({
       eventType: SubscriptionEventType.LAYOUT_TYPE,
-      callback: this.layoutTypeCallback,
+      callback: this.callback,
     })
+
+    console.log('Unsubscribed layout_type')
   }
 }

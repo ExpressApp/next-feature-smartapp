@@ -32,7 +32,7 @@ const UnreadCountersPage: FC = () => {
 
   useEffect(() => {
     return () => {
-      store.unsubscribeUnreadCounterChange()
+      store.unsubscribeUnreadCounterChange(type, id)
     }
   }, [])
 
@@ -40,9 +40,9 @@ const UnreadCountersPage: FC = () => {
 
   const handleIdChange = (event: React.ChangeEvent<HTMLInputElement>) => setId(event.target.value)
 
-  const handleSubscribeUnreadCounters = () => store.subscribeUnreadCounterChange()
+  const handleSubscribeUnreadCounters = () => store.subscribeUnreadCounterChange(type, id)
 
-  const handleUnsubscribeUnreadCounters = () => store.unsubscribeUnreadCounterChange()
+  const handleUnsubscribeUnreadCounters = () => store.unsubscribeUnreadCounterChange(type, id)
 
   const handleGetUnreadCounter = () => {
     store.getUnreadCounter(type, id)

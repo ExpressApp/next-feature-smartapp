@@ -7,15 +7,17 @@ import { EntityType, UnreadCounterSubscriptionEvent } from './unread-counters.ty
 export class UnreadCountersStore {
   rootStore: RootStore
   unreadCounter: number | null
+  callback: Function
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this)
 
     this.rootStore = rootStore
     this.unreadCounter = null
+    this.callback = this.unreadCounterCallback.bind(this)
   }
 
-  private UnreadCounterCallback(event: UnreadCounterSubscriptionEvent) {
+  private unreadCounterCallback(event: UnreadCounterSubscriptionEvent) {
     this.unreadCounter = event.payload.unreadCounter
   }
 
@@ -36,19 +38,29 @@ export class UnreadCountersStore {
     }
   }
 
-  async subscribeUnreadCounterChange() {
+  async subscribeUnreadCounterChange(type: EntityType, id: string) {
     await SDK.subscribeClientEvents({
       eventType: SubscriptionEventType.UNREAD_COUNTER_CHANGE,
-      callback: this.UnreadCounterCallback.bind(this),
+      callback: this.callback,
+      payload: {
+        type,
+        id,
+      }
     })
 
     console.log('Subscribed unread_counter_change')
   }
 
-  async unsubscribeUnreadCounterChange() {
+  async unsubscribeUnreadCounterChange(type: EntityType, id: string) {
     await SDK.unsubscribeClientEvents({
       eventType: SubscriptionEventType.UNREAD_COUNTER_CHANGE,
-      callback: this.UnreadCounterCallback,
+      callback: this.callback,
+      payload: {
+        type,
+        id,
+      }
     })
+
+    console.log('Unubscribed unread_counter_change')
   }
 }
