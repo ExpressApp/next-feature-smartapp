@@ -1,5 +1,5 @@
 import * as SDK from '@expressms/smartapp-sdk'
-import { makeAutoObservable, makeObservable, observable, runInAction } from 'mobx'
+import { makeObservable, observable, runInAction } from 'mobx'
 import { RootStore } from '../../store/rootStore'
 import { GetLayoutTypeResponse, STATUS, SubscriptionEventType } from '@expressms/smartapp-sdk/build/main/types'
 import { LayoutSubscriptionEvent } from './layout-type.types'
@@ -7,7 +7,7 @@ import { LayoutSubscriptionEvent } from './layout-type.types'
 export class LayoutTypeStore {
   rootStore: RootStore
   @observable layoutType: string
-  callback: Function
+  callback: () => void
 
   constructor(rootStore: RootStore) {
     makeObservable(this)

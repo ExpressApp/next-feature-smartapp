@@ -7,7 +7,7 @@ import { EntityType, UnreadCounterSubscriptionEvent } from './unread-counters.ty
 export class UnreadCountersStore {
   rootStore: RootStore
   unreadCounter: number | null
-  callback: Function
+  callback: () => void
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this)
@@ -18,7 +18,14 @@ export class UnreadCountersStore {
   }
 
   private unreadCounterCallback(event: UnreadCounterSubscriptionEvent) {
-    this.unreadCounter = event.payload.unreadCounter
+    const {
+      unreadCounter,
+      source: { type, id },
+    } = event.payload
+
+    this.unreadCounter = unreadCounter
+
+    this.rootStore.toastStore.showToast(`Счетчик = ${unreadCounter} для ${type} = ${id}`)
   }
 
   async getUnreadCounter(type: EntityType, id: string) {
@@ -45,7 +52,7 @@ export class UnreadCountersStore {
       payload: {
         type,
         id,
-      }
+      },
     })
 
     console.log('Subscribed unread_counter_change')
@@ -58,7 +65,7 @@ export class UnreadCountersStore {
       payload: {
         type,
         id,
-      }
+      },
     })
 
     console.log('Unubscribed unread_counter_change')
