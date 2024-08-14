@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-const PageStyled = styled.div`
+const PageStyled = styled.section`
   padding: 10px 20px;
 `
 
