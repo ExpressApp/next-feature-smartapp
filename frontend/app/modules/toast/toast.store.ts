@@ -18,7 +18,7 @@ export class ToastStore {
     const toastOptions = {
       theme: this.isDarkTheme ? 'dark' : 'light',
       position: 'bottom-left' as ToastPosition,
-      autoClose: 3000,
+      autoClose: 6000,
     }
 
     toast.info(text, toastOptions)
