@@ -29,11 +29,15 @@ export class BotCommandStore {
       })) as StatusResponse
 
       if (response.payload.status === STATUS.ERROR) {
-        this.rootStore.toastStore.showToast(`Ошибка прие отправке команды ${response.payload.errorCode}`)
+        this.rootStore.toastStore.showToast(`Ошибка при отправке команды ${response.payload.errorCode}`)
       }
 
       runInAction(() => {
         this.response = response
+
+        if (method === 'send_notification') {
+          this.rootStore.toastStore.showToast('NotificationStatus: ok')
+        }
       })
     } catch (e) {
       this.rootStore.toastStore.showToast(`Ошибка при отправке команды ${e?.message}`)
