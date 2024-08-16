@@ -14,11 +14,11 @@ export class ToastStore {
     this.isDarkTheme = isDarkTheme
   }
 
-  showToast(text: string) {
+  showToast(text: string, timeout = 3000) {
     const toastOptions = {
       theme: this.isDarkTheme ? 'dark' : 'light',
       position: 'bottom-left' as ToastPosition,
-      autoClose: 6000,
+      autoClose: timeout,
     }
 
     toast.info(text, toastOptions)

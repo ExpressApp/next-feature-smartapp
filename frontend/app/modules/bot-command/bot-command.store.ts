@@ -36,7 +36,7 @@ export class BotCommandStore {
         this.response = response
 
         if (method === 'send_notification') {
-          this.rootStore.toastStore.showToast('NotificationStatus: ok')
+          this.rootStore.toastStore.showToast('NotificationStatus: ok', 6000)
         }
       })
     } catch (e) {
