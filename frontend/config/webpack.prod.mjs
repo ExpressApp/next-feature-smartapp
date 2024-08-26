@@ -22,11 +22,11 @@ export default {
     new HtmlWebpackPlugin({
       template: './app/public/index.html',
     }),
-    // new GenerateJsonPlugin('smartapp-manifest.json', {
-    //   ...smartappManifestJson,
-    //   smartAppVersion: packageJson.version,
-    //   bundlePath: `/bundle-${packageJson.version}.zip`,
-    // }),
+    new GenerateJsonPlugin('smartapp-manifest.json', {
+      ...smartappManifestJson,
+      smartAppVersion: packageJson.version,
+      bundlePath: `/bundle-${packageJson.version}.zip`,
+    }),
     new ZipPlugin({
       filename: `bundle-${packageJson.version}.zip`,
       exclude: [/\.map$/]
