@@ -26,8 +26,10 @@ def build_smartapp_notification_text(event: Dict[str, Any]) -> str:
 def build_file_meta_text(meta_file: File) -> str:
     return (
         f"Name: **{meta_file.filename}**\n"
-        f"Mime: **{meta_file._file_mimetype}**\n"
+        f"File ID: **{meta_file._file_id}**\n"
+        f"Mime type: **{meta_file._file_mimetype}**\n"
         f"Size: **{meta_file.size}**\n"
+        f"Url: **{meta_file._file_url}**\n"
     )
 
 
