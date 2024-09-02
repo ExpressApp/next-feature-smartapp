@@ -1160,10 +1160,10 @@
     lodash-es "^4.17.21"
     uuid "^8.3.2"
 
-"@expressms/smartapp-sdk@1.10.0-alpha.1":
-  version "1.10.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@expressms/smartapp-sdk/-/smartapp-sdk-1.10.0-alpha.1.tgz#b4eba2a5b68529a0c64b106839543a40a6282007"
-  integrity sha512-ykvx75XDGJKxodEezO+3iJTJy8EE0fzehKRx7DY8geg3J8Mr9OdZCTk52X0phgMw08F4jCogsU1UVQzYdYvUrQ==
+"@expressms/smartapp-sdk@1.10.0-alpha.2":
+  version "1.10.0-alpha.2"
+  resolved "https://registry.yarnpkg.com/@expressms/smartapp-sdk/-/smartapp-sdk-1.10.0-alpha.2.tgz#2ca8ba6b66bfedbfb1d2af354dca6a9bc907438e"
+  integrity sha512-dZyzPSTpOEOJxm+0Vagh5L1V7pTI6Oua9SmL4gD0yERp9sYOOuq0tziJSGhqksIzO1TrRqUg6eZ8d/cgxNQYcw==
   dependencies:
     "@expressms/smartapp-bridge" "1.4.0-alpha.1"
 

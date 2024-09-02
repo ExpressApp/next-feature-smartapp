@@ -159,6 +159,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">text_snippet</span>
         Скрытие данных в логах
       </StyledLink>
+      <StyledLink to="clean-cache">
+        <span className="material-icons">folder_off</span>
+        Очистка кеша статики
+      </StyledLink>
     </>
   )
 }

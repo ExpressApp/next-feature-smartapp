@@ -2,5 +2,5 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Фикс AT CCS-100500"
+  "changeLog": "CCS-100748 Очистка кеша"
 }

@@ -31,6 +31,7 @@ import { BotCommandStore } from '../modules/bot-command/bot-command.store'
 import { MaxFileSizeStore } from '../modules/max-file-size/max-file-size.store'
 import { SendBotCommandStore } from '../modules/send-bot-command/send-bot-command.store'
 import { HideLogsStore } from '../modules/hide-logs/hide-logs.store'
+import { CleanCacheStore } from '../modules/clean-cache/clean-cache.store'
 
 export class RootStore {
   appStore: AppStore
@@ -66,6 +67,7 @@ export class RootStore {
   maxFileSizeStore: MaxFileSizeStore
   sendBotCommandStore: SendBotCommandStore
   hideLogsStore: HideLogsStore
+  cleanCacheStore: CleanCacheStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -101,5 +103,6 @@ export class RootStore {
     this.maxFileSizeStore = new MaxFileSizeStore(this)
     this.sendBotCommandStore = new SendBotCommandStore(this)
     this.hideLogsStore = new HideLogsStore(this)
+    this.cleanCacheStore = new CleanCacheStore(this)
   }
 }
