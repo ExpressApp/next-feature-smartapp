@@ -1,5 +1,6 @@
-import { toast, ToastPosition } from 'react-toastify'
+import { toast, ToastPosition, TypeOptions } from 'react-toastify'
 import { RootStore } from '../../store/rootStore'
+import ToastInner from './ToastInner'
 
 export class ToastStore {
   rootStore: RootStore
@@ -19,8 +20,9 @@ export class ToastStore {
       theme: this.isDarkTheme ? 'dark' : 'light',
       position: 'bottom-left' as ToastPosition,
       autoClose: timeout,
+      type: 'info' as TypeOptions,
     }
 
-    toast.info(text, toastOptions)
+    toast(ToastInner({ text }), toastOptions)
   }
 }
