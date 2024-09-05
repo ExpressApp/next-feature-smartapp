@@ -34,7 +34,7 @@ const Toast: FC = () => {
     <>
       <GlobalStyle />
       <ToastContainer />
-      <Input value={store.lastText} id="toast-text" />
+      {!!store.lastText && <Input value={store.lastText} id="toast-text" />}
     </>
   )
 }

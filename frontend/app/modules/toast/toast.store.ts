@@ -15,6 +15,10 @@ export class ToastStore {
     this.lastText = ''
   }
 
+  private onClose() {
+    this.lastText = ''
+  }
+
   setTheme(isDarkTheme: boolean) {
     this.isDarkTheme = isDarkTheme
   }
@@ -26,6 +30,7 @@ export class ToastStore {
       theme: this.isDarkTheme ? 'dark' : 'light',
       position: 'bottom-left' as ToastPosition,
       autoClose: timeout,
+      onClose: this.onClose.bind(this),
     }
 
     toast.info(text, toastOptions)
