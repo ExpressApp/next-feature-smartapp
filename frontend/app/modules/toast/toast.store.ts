@@ -1,14 +1,18 @@
-import { toast, ToastPosition, TypeOptions } from 'react-toastify'
+import { toast, ToastPosition } from 'react-toastify'
 import { RootStore } from '../../store/rootStore'
-import ToastInner from './ToastInner'
+import { makeObservable, observable } from 'mobx'
 
 export class ToastStore {
   rootStore: RootStore
   isDarkTheme: boolean
+  @observable lastText: string
 
   constructor(rootStore: RootStore) {
+    makeObservable(this)
+
     this.rootStore = rootStore
     this.isDarkTheme = false
+    this.lastText = ''
   }
 
   setTheme(isDarkTheme: boolean) {
@@ -16,13 +20,14 @@ export class ToastStore {
   }
 
   showToast(text: string, timeout = 3000) {
+    this.lastText = text
+
     const toastOptions = {
       theme: this.isDarkTheme ? 'dark' : 'light',
       position: 'bottom-left' as ToastPosition,
       autoClose: timeout,
-      type: 'info' as TypeOptions,
     }
 
-    toast(ToastInner({ text }), toastOptions)
+    toast.info(text, toastOptions)
   }
 }
