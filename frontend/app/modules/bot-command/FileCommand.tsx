@@ -7,6 +7,7 @@ import Button from '../../components/Button'
 import RemoveIcon from '../../assets/clear-input.svg'
 import JsonViewer from '../../components/JsonViewer'
 import MainLoader from '../../components/MainLoader'
+import AttrList from './AttrList'
 
 const FileDiv = styled.div`
   display: flex;
@@ -69,15 +70,10 @@ const FileCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
         </FileDiv>
       ))}
       <br />
-      {!!store.filesResponse.length &&
-        store.filesResponse.map(({ attr, value }, idx) => (
-          <FileDiv key={idx}>
-            <span>{attr}:</span>
-            <b>{value}</b>
-          </FileDiv>
-        ))}
-      <br />
       <Button onClick={handleSubmit} id="submit" title="Отправить" icon="send" disabled={!store.files.length} />
+      <br />
+      <br />
+      {!!store.filesResponse.length && <AttrList attrs={store.filesResponse} />}
       <br />
       <br />
       {store.response && <JsonViewer data={store.response} id="response" />}

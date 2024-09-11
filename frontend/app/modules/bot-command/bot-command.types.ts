@@ -44,7 +44,7 @@ export interface UploadFilesResponse extends Omit<EmitterEventPayload, 'payload'
   }
 }
 
-export type FileTextResponse = {
+export type AttrResponse = {
   attr: string
   value: string
 }

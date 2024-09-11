@@ -2,13 +2,14 @@ import * as SDK from '@expressms/smartapp-sdk'
 import { RootStore } from '../../store/rootStore'
 import { STATUS, StatusResponse } from '@expressms/smartapp-sdk/build/main/types'
 import { makeAutoObservable, runInAction } from 'mobx'
-import { FileData, FileTextResponse, UploadFileResponse, UploadFilesResponse } from './bot-command.types'
+import { FileData, AttrResponse, UploadFileResponse, UploadFilesResponse } from './bot-command.types'
 
 export class BotCommandStore {
   rootStore: RootStore
   response: object | null
   files: FileData[]
-  filesResponse: FileTextResponse[]
+  filesResponse: AttrResponse[]
+  huidsResponse: AttrResponse[]
   isLoading: boolean
 
   constructor(rootStore: RootStore) {
@@ -18,6 +19,7 @@ export class BotCommandStore {
     this.response = null
     this.files = []
     this.filesResponse = []
+    this.huidsResponse = []
     this.isLoading = false
   }
 
@@ -37,6 +39,11 @@ export class BotCommandStore {
 
         if (method === 'send_notification') {
           this.rootStore.toastStore.showToast('NotificationStatus: ok', 6000)
+        }
+
+        if (method === 'search_users') {
+          // @ts-expect-error: object cast error
+          this.huidsResponse = this.parseTextResponse(response.payload?.result)
         }
       })
     } catch (e) {
@@ -87,12 +94,15 @@ export class BotCommandStore {
     this.filesResponse = []
   }
 
-  private parseFilesResponse(text: string): Array<FileTextResponse> {
+  clearHuids() {
+    this.huidsResponse = []
+  }
+
+  private parseTextResponse(text: string): Array<AttrResponse> {
     return text
       .split('\n')
       .filter(textRow => !!textRow.trim())
       .map(textRow => {
-        console.log(textRow)
         const [attr, rawText] = textRow.split(':')
         return {
           attr,
@@ -120,7 +130,7 @@ export class BotCommandStore {
         this.response = response
 
         // @ts-expect-error: object cast error
-        this.filesResponse = this.parseFilesResponse(response.payload?.result)
+        this.filesResponse = this.parseTextResponse(response.payload?.result)
       })
     } catch (e) {
       this.rootStore.toastStore.showToast(`Ошибка при отправке команды с файлами ${e?.message}`)

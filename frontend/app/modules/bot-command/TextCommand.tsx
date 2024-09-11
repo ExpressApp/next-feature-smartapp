@@ -6,6 +6,7 @@ import JsonViewer from '../../components/JsonViewer'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import UuidInput from './UuidInput'
+import AttrList from './AttrList'
 
 const TextCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
   const { botCommandStore: store } = useStore()
@@ -13,6 +14,7 @@ const TextCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
 
   useEffect(() => {
     store.clearResponse()
+    store.clearHuids()
   }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +35,7 @@ const TextCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
   )
 
   const handleSubmit = () => {
+    store.clearHuids()
     store.sendTextAppEvent(botFeature.method, formData)
   }
 
@@ -59,6 +62,9 @@ const TextCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
         }
       })}
       <Button onClick={handleSubmit} id="submit" title="Отправить" icon="send" />
+      <br />
+      <br />
+      {botFeature.method === 'search_users' && <AttrList attrs={store.huidsResponse} />}
       <br />
       <br />
       {store.response && <JsonViewer data={store.response} id="response" />}
