@@ -12,6 +12,8 @@ const TextCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
   const { botCommandStore: store } = useStore()
   const [formData, setFormData] = useState<{ [key: string]: string | string[] | FileData[] }>({})
 
+  const isSubmitEnabled = !botFeature.uiElements.length || Object.values(formData).some(value => !!value)
+
   useEffect(() => {
     store.clearResponse()
     store.clearHuids()
@@ -61,7 +63,7 @@ const TextCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
             return <UuidInput key={id} id={id} label={label} onChange={handleUuidChange} />
         }
       })}
-      <Button onClick={handleSubmit} id="submit" title="Отправить" icon="send" />
+      <Button onClick={handleSubmit} id="submit" title="Отправить" icon="send" disabled={!isSubmitEnabled} />
       <br />
       <br />
       {botFeature.method === 'search_users' && <AttrList attrs={store.huidsResponse} />}
