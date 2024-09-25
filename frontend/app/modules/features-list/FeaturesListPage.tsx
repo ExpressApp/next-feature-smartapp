@@ -40,6 +40,7 @@ import MaxFileSizePage from '../max-file-size/MaxFileSizePage'
 import SendBotCommandPage from '../send-bot-command/SendBotCommandPage'
 import HideLogsPage from '../hide-logs/HideLogsPage'
 import CleanCachePage from '../clean-cache/CleanCachePage'
+import AntimalwarePage from '../antimalware/AntimalwarePage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -106,6 +107,7 @@ const FeaturesListPage = () => {
           <Route path="/send-bot-command" element={<SendBotCommandPage />} />
           <Route path="/hide-log-data" element={<HideLogsPage />} />
           <Route path="/clean-cache" element={<CleanCachePage />} />
+          <Route path="/antimalware" element={<AntimalwarePage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}

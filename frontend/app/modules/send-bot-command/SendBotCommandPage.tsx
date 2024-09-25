@@ -32,7 +32,7 @@ const SendBotCommandPage: FC = () => {
       <Input onChange={handleBodyChange} value={body} id="body" />
       Данные
       <Input onChange={handleDataChange} value={data} id="data" />
-      <Button onClick={handleSubmit} id="submit" title="Отправить" />
+      <Button onClick={handleSubmit} id="submit" title="Отправить" disabled={!userHuid || !body} />
       <br />
       <br />
       {store.response && <JsonViewer data={store.response} id="response" />}

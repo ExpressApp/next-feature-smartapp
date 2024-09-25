@@ -163,6 +163,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">folder_off</span>
         Очистка кеша статики
       </StyledLink>
+      <StyledLink to="antimalware">
+        <span className="material-icons">bug_report</span>
+        Антивирусная проверка файлов
+      </StyledLink>
     </>
   )
 }

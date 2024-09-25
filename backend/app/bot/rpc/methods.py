@@ -20,6 +20,7 @@ from app.services.answers import (
     build_file_meta_text,
     build_static_image_url,
     build_user_from_search_text,
+    build_example_file_meta,
 )
 from app.services.botx_user_search import (
     UserIsBotError,
@@ -220,3 +221,23 @@ async def echo_static_file(smartapp: SmartApp) -> RPCResultResponse[str]:
         )
 
     return RPCResultResponse(await build_static_image_url(async_file, smartapp))
+
+
+class GetExampleFileArgs(RPCArgsBaseModel):
+    file_type: str
+
+@rpc.feature("get_example_file", name="Example file", ui_elements=[ui_elements.file_type])
+async def get_example_file(
+    smartapp: SmartApp, rpc_arguments: GetExampleFileArgs
+) -> RPCResultResponse[str]:
+    try:
+        async_file = await build_example_file_meta(rpc_arguments.file_type, smartapp)
+    except IndexError:
+        raise RPCErrorExc(
+            RPCError(
+                reason="File type required",
+                id="ASYNC_FILES_REQUIRED",
+            )
+        )
+
+    return RPCResultResponse("ok", files=[async_file])

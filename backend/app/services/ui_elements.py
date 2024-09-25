@@ -10,3 +10,4 @@ delay_input = UIElement(id="delay", type=UIElementTypes.INPUT_NUMBER, label="Del
 file_picker = UIElement(id="file", type=UIElementTypes.FILE_PICKER, label="File")
 files_picker = UIElement(id="files", type=UIElementTypes.FILE_PICKER, label="Files")
 huids_input = UIElement(id="huids", type=UIElementTypes.ARRAY_UUID, label="Huids")
+file_type = UIElement(id="file_type", type=UIElementTypes.INPUT_TEXT, label="File type")
