@@ -28,7 +28,7 @@ const Select = styled.select`
 const UnreadCountersPage: FC = () => {
   const { unreadCountersStore: store } = useStore()
   const [id, setId] = useState('')
-  const [type, setType] = useState<EntityType>('huid')
+  const [type, setType] = useState<EntityType>('user')
 
   useEffect(() => {
     return () => {
@@ -53,7 +53,7 @@ const UnreadCountersPage: FC = () => {
       <FeatureHeader name="Каунтер непрочитанных событий" />
       Тип
       <Select className="input" onChange={handleTypeChange} defaultValue={type} id="type-select">
-        <option value="huid">пользователь</option>
+        <option value="user">пользователь</option>
         <option value="chat">чат</option>
         <option value="smartapp">smartapp</option>
       </Select>
