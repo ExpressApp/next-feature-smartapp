@@ -12,7 +12,9 @@ export default class HighloadTester {
 
     Bridge?.sendBotEvent({
       method: 'menu',
-      params: {},
+      params: {
+        key1: 'value1',
+      },
       sync_request: true,
     })
       .then(() => {

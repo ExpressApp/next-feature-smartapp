@@ -29,7 +29,9 @@ export class SyncRequestStore {
     try {
       await Bridge?.sendBotEvent({
         method: 'menu',
-        params: {},
+        params: {
+          key1: 'value1',
+        },
         sync_request: isSync,
       })
     } catch (e) {
@@ -77,7 +79,9 @@ export class SyncRequestStore {
     try {
       const response = (await Bridge?.sendBotEvent({
         method: 'menu',
-        params: {},
+        params: {
+          key1: 'value1',
+        },
         sync_request: isSync,
       })) as StatusResponse
 
