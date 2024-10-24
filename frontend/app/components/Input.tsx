@@ -48,7 +48,7 @@ const Input: FC<Props> = props => {
   return (
     <>
       <InputStyled {...props} />
-      {!props.type && props.value && <CloseIcon onClick={handleClear} id={`${props.id}.field-clear`} />}
+      {!props.type && !!props.value && <CloseIcon onClick={handleClear} id={`${props.id}.field-clear`} />}
     </>
   )
 }
