@@ -16,9 +16,9 @@ export class MaxFileSizeStore {
     this.response = null
   }
 
-  async uploadFile(mimeType: string, maxSize: number): Promise<void> {
+  async uploadFile(mimeType: string, maxSize?: number, totalSize?: number): Promise<void> {
     try {
-      const response = await SDK.uploadFiles({ mimeType, maxSize })
+      const response = await SDK.uploadFiles({ mimeType, maxSize, totalSize })
 
       if (response.payload.status === STATUS.ERROR) {
         this.rootStore.toastStore.showToast(`Ошибка при отправке файла SmartApp ${response.payload.errorCode}`)

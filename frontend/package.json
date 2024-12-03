@@ -1,6 +1,6 @@
 {
   "name": "next-feature-smartapp",
-  "version": "2.5.4",
+  "version": "2.6.0",
   "description": "SmartApp with all features",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@amcharts/amcharts5": "5.9.12",
-    "@expressms/smartapp-sdk": "1.10.0-alpha.4",
+    "@expressms/smartapp-sdk": "1.11.0-alpha.0",
     "html5-qrcode": "2.3.8",
     "jsoneditor": "10.1.0",
     "material-icons": "1.13.12",

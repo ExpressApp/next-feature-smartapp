@@ -9,16 +9,20 @@ import { observer } from 'mobx-react'
 
 const MaxFileSizePage: FC = () => {
   const { maxFileSizeStore: store } = useStore()
-  const [maxSize, setMaxSize] = useState(10_000_000)
+  const [maxSize, setMaxSize] = useState('10000000')
+  const [totalSize, setTotalSize] = useState('30000000')
   const [mime, setMime] = useState('')
 
-  const handleMaxSizeChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setMaxSize(parseInt(event.target.value, 10))
+  const handleMaxSizeChange = (event: React.ChangeEvent<HTMLInputElement>) => setMaxSize(event.target.value)
+
+  const handleTotalSizeChange = (event: React.ChangeEvent<HTMLInputElement>) => setTotalSize(event.target.value)
 
   const handleMimeChange = (event: React.ChangeEvent<HTMLInputElement>) => setMime(event.target.value)
 
   const handleSubmit = () => {
-    store.uploadFile(mime, maxSize)
+    const maxSizeParsed = maxSize ? parseInt(maxSize, 10) : undefined
+    const totalSizeParsed = totalSize ? parseInt(totalSize, 10) : undefined
+    store.uploadFile(mime, maxSizeParsed, totalSizeParsed)
   }
 
   return (
@@ -26,8 +30,10 @@ const MaxFileSizePage: FC = () => {
       <FeatureHeader name="Ограничение размера файла" />
       Mime тип
       <Input onChange={handleMimeChange} value={mime} id="mime-type" />
-      Размер в байтах
+      Размер одного файла в байтах
       <Input onChange={handleMaxSizeChange} value={maxSize} id="max-size" type="numeric" />
+      Размер всех файлов в байтах
+      <Input onChange={handleTotalSizeChange} value={totalSize} id="max-size" type="numeric" />
       <Button onClick={handleSubmit} id="submit" title="Прикрепить" />
       <br />
       <br />
