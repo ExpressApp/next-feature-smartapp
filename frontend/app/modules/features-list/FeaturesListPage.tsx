@@ -41,6 +41,7 @@ import SendBotCommandPage from '../send-bot-command/SendBotCommandPage'
 import HideLogsPage from '../hide-logs/HideLogsPage'
 import CleanCachePage from '../clean-cache/CleanCachePage'
 import AntimalwarePage from '../antimalware/AntimalwarePage'
+import AppVisibilityPage from '../app-visibility/AppVisibilityPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -108,6 +109,7 @@ const FeaturesListPage = () => {
           <Route path="/hide-log-data" element={<HideLogsPage />} />
           <Route path="/clean-cache" element={<CleanCachePage />} />
           <Route path="/antimalware" element={<AntimalwarePage />} />
+          <Route path="/app-visibility" element={<AppVisibilityPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}

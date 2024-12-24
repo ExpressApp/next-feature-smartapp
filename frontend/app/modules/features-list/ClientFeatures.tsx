@@ -167,6 +167,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">bug_report</span>
         Антивирусная проверка файлов
       </StyledLink>
+      <StyledLink to="app-visibility">
+        <span className="material-icons">visibility_off</span>
+        Видимость окна SmartApp
+      </StyledLink>
     </>
   )
 }

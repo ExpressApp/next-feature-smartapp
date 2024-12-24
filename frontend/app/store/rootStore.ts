@@ -33,6 +33,7 @@ import { SendBotCommandStore } from '../modules/send-bot-command/send-bot-comman
 import { HideLogsStore } from '../modules/hide-logs/hide-logs.store'
 import { CleanCacheStore } from '../modules/clean-cache/clean-cache.store'
 import { AntimalwareStore } from '../modules/antimalware/antimalware.store'
+import { AppVisibilityStore } from '../modules/app-visibility/app-visibility.store'
 
 export class RootStore {
   appStore: AppStore
@@ -70,6 +71,7 @@ export class RootStore {
   hideLogsStore: HideLogsStore
   cleanCacheStore: CleanCacheStore
   antimalwareStore: AntimalwareStore
+  appVisibilityStore: AppVisibilityStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -107,5 +109,6 @@ export class RootStore {
     this.hideLogsStore = new HideLogsStore(this)
     this.cleanCacheStore = new CleanCacheStore(this)
     this.antimalwareStore = new AntimalwareStore(this)
+    this.appVisibilityStore = new AppVisibilityStore(this)
   }
 }
