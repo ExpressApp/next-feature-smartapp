@@ -28,8 +28,8 @@ const SearchPhonebookPage: FC = () => {
   const handleLocalSearch = () => store.searchLocalPhonebook(filter)
 
   const handleCorpSearch = () => {
-    const exactSearchMapped = exactSearch === SEARCH.USER_SETTINGS ? undefined : JSON.parse(exactSearch)
-    store.searchCorpPhonebook(filter, exactSearchMapped)
+    const exactMatch = exactSearch === SEARCH.USER_SETTINGS ? undefined : JSON.parse(exactSearch)
+    store.searchCorpPhonebook(filter, exactMatch)
   }
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => setExactSearch(e.target.value)
