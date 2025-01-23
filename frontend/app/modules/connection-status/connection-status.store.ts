@@ -45,7 +45,7 @@ export class ConnectionStatusStore {
   async unsubscribeConnectionStatusChange() {
     await SDK.unsubscribeClientEvents({
       eventType: SubscriptionEventType.CONNECTION_STATUS,
-      callback: this.connectionStatusCallback,
+      callback: this.connectionStatusCallback.bind(this),
     })
   }
 }
