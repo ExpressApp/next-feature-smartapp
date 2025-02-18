@@ -22,7 +22,7 @@ export class AppStore {
 
     if (meta || initialData?.initiator) {
       runInAction(() => {
-        this.rootStore.initialDataStore.setInitialData(response?.payload as object)
+        this.rootStore.initialDataStore.setInitialData(response)
         window.location.hash = '/initial-data'
       })
       return

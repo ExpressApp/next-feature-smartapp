@@ -8,7 +8,7 @@ export class ConnectionStatusStore {
   rootStore: RootStore
   connectionStatus: string | null
   subscribedConnectionStatus: string | null
-  callback: Function
+  callback: () => void
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this)
