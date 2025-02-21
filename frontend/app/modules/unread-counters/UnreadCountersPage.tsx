@@ -28,11 +28,11 @@ const Select = styled.select`
 const UnreadCountersPage: FC = () => {
   const { unreadCountersStore: store } = useStore()
   const [id, setId] = useState('')
-  const [type, setType] = useState<EntityType>('huid')
+  const [type, setType] = useState<EntityType>('user')
 
   useEffect(() => {
     return () => {
-      store.unsubscribeUnreadCounterChange()
+      store.unsubscribeUnreadCounterChange(type, id)
     }
   }, [])
 
@@ -40,9 +40,9 @@ const UnreadCountersPage: FC = () => {
 
   const handleIdChange = (event: React.ChangeEvent<HTMLInputElement>) => setId(event.target.value)
 
-  const handleSubscribeUnreadCounters = () => store.subscribeUnreadCounterChange()
+  const handleSubscribeUnreadCounters = () => store.subscribeUnreadCounterChange(type, id)
 
-  const handleUnsubscribeUnreadCounters = () => store.unsubscribeUnreadCounterChange()
+  const handleUnsubscribeUnreadCounters = () => store.unsubscribeUnreadCounterChange(type, id)
 
   const handleGetUnreadCounter = () => {
     store.getUnreadCounter(type, id)
@@ -53,7 +53,7 @@ const UnreadCountersPage: FC = () => {
       <FeatureHeader name="Каунтер непрочитанных событий" />
       Тип
       <Select className="input" onChange={handleTypeChange} defaultValue={type} id="type-select">
-        <option value="huid">пользователь</option>
+        <option value="user">пользователь</option>
         <option value="chat">чат</option>
         <option value="smartapp">smartapp</option>
       </Select>

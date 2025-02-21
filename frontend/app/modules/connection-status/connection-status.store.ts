@@ -8,6 +8,7 @@ export class ConnectionStatusStore {
   rootStore: RootStore
   connectionStatus: string | null
   subscribedConnectionStatus: string | null
+  callback: () => void
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this)
@@ -15,6 +16,8 @@ export class ConnectionStatusStore {
     this.rootStore = rootStore
     this.connectionStatus = null
     this.subscribedConnectionStatus = null
+
+    this.callback = this.connectionStatusCallback.bind(this)
   }
 
   private connectionStatusCallback(event: ConnnectionStatusSubscriptionEvent) {
@@ -36,7 +39,7 @@ export class ConnectionStatusStore {
   async subscribeConnectionStatusChange() {
     await SDK.subscribeClientEvents({
       eventType: SubscriptionEventType.CONNECTION_STATUS,
-      callback: this.connectionStatusCallback.bind(this),
+      callback: this.callback,
     })
 
     console.log('Subscribed connection_status')
@@ -45,7 +48,7 @@ export class ConnectionStatusStore {
   async unsubscribeConnectionStatusChange() {
     await SDK.unsubscribeClientEvents({
       eventType: SubscriptionEventType.CONNECTION_STATUS,
-      callback: this.connectionStatusCallback,
+      callback: this.callback,
     })
   }
 }

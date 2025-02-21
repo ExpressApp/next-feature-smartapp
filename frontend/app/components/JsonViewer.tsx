@@ -8,7 +8,6 @@ import JSONEditor from 'jsoneditor/dist/jsoneditor-minimalist.min'
 
 const EditorStyle = createGlobalStyle`
 .json-viewer {
-  position: relative;
   border: 1px solid var(--light-grey);
 }
 .json-viewer .jsoneditor-menu {

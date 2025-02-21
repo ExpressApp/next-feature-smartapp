@@ -29,6 +29,11 @@ import { InitialDataStore } from '../modules/initial-data/initial-data.store'
 import { GuaranteedDeliveryStore } from '../modules/guaranteed-delivery/guaranteed-delivery.store'
 import { BotCommandStore } from '../modules/bot-command/bot-command.store'
 import { MaxFileSizeStore } from '../modules/max-file-size/max-file-size.store'
+import { SendBotCommandStore } from '../modules/send-bot-command/send-bot-command.store'
+import { HideLogsStore } from '../modules/hide-logs/hide-logs.store'
+import { CleanCacheStore } from '../modules/clean-cache/clean-cache.store'
+import { AntimalwareStore } from '../modules/antimalware/antimalware.store'
+import { AppVisibilityStore } from '../modules/app-visibility/app-visibility.store'
 
 export class RootStore {
   appStore: AppStore
@@ -62,6 +67,11 @@ export class RootStore {
   guaranteedDeliveryStore: GuaranteedDeliveryStore
   botCommandStore: BotCommandStore
   maxFileSizeStore: MaxFileSizeStore
+  sendBotCommandStore: SendBotCommandStore
+  hideLogsStore: HideLogsStore
+  cleanCacheStore: CleanCacheStore
+  antimalwareStore: AntimalwareStore
+  appVisibilityStore: AppVisibilityStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -95,5 +105,10 @@ export class RootStore {
     this.guaranteedDeliveryStore = new GuaranteedDeliveryStore(this)
     this.botCommandStore = new BotCommandStore(this)
     this.maxFileSizeStore = new MaxFileSizeStore(this)
+    this.sendBotCommandStore = new SendBotCommandStore(this)
+    this.hideLogsStore = new HideLogsStore(this)
+    this.cleanCacheStore = new CleanCacheStore(this)
+    this.antimalwareStore = new AntimalwareStore(this)
+    this.appVisibilityStore = new AppVisibilityStore(this)
   }
 }

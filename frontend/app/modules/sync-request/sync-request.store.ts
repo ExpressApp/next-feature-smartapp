@@ -29,7 +29,9 @@ export class SyncRequestStore {
     try {
       await Bridge?.sendBotEvent({
         method: 'menu',
-        params: {},
+        params: {
+          key1: 'value1',
+        },
         sync_request: isSync,
       })
     } catch (e) {
@@ -75,9 +77,14 @@ export class SyncRequestStore {
 
   async sendAppEvent(isSync: boolean) {
     try {
+      Bridge?.disableRenameParams()
+
       const response = (await Bridge?.sendBotEvent({
         method: 'menu',
-        params: {},
+        params: {
+          under_score_value: 'value1',
+          camelCaseValue: 'value2',
+        },
         sync_request: isSync,
       })) as StatusResponse
 
@@ -90,6 +97,8 @@ export class SyncRequestStore {
       })
     } catch (e) {
       this.rootStore.toastStore.showToast(`Ошибка при выполнении запроса ${e?.message}`)
+    } finally {
+      Bridge?.enableRenameParams()
     }
   }
 }

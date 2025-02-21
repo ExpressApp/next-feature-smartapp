@@ -3,7 +3,7 @@ import { RootStore } from '../../store/rootStore'
 import { STATUS, StatusResponse } from '@expressms/smartapp-sdk/build/main/types'
 import { makeAutoObservable, runInAction } from 'mobx'
 
-export class SendMessageStore {
+export class SendBotCommandStore {
   rootStore: RootStore
   response: object | null
 
@@ -14,11 +14,9 @@ export class SendMessageStore {
     this.response = null
   }
 
-  async sendMessage(messageBody: string, groupChatId: string, userHuidRaw: string): Promise<void> {
+  async sendBotCommand(userHuid: string, body: string, command: string): Promise<void> {
     try {
-      const userHuid = !userHuidRaw ? null : userHuidRaw
-
-      const response = (await SDK.sendMessage({ messageBody, groupChatId, userHuid })) as StatusResponse
+      const response = (await SDK.sendBotCommand({ userHuid, body, data: { command } })) as StatusResponse
 
       if (response.payload.status === STATUS.ERROR) {
         this.rootStore.toastStore.showToast(`Ошибка при отправке сообщения ${response.payload.errorCode}`)

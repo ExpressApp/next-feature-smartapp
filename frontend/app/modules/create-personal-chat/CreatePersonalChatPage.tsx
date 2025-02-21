@@ -21,7 +21,7 @@ const CreatePersonalChatPage: FC = () => {
       <FeatureHeader name="Создание персонального чата" />
       HUID пользователя
       <Input onChange={handleHuidChange} value={huid} id="phone" />
-      <Button onClick={handleSubmit} id="submit" title="Создать" />
+      <Button onClick={handleSubmit} id="submit" title="Создать" disabled={!huid} />
     </FeaturePage>
   )
 }

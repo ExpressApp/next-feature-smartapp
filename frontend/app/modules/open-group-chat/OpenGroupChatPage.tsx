@@ -19,7 +19,7 @@ const OpenGroupChatPage: FC = () => {
   return (
     <FeaturePage>
       <FeatureHeader name="Открытие чата" />
-      HUID пользователя
+      ID чата
       <Input onChange={handleChange} value={groupChatId} id="groupChatId" />
       <Button onClick={handleSubmit} id="submit" title="Открыть" />
     </FeaturePage>

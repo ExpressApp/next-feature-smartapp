@@ -71,6 +71,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">send</span>
         Отправка сообщения в чат
       </StyledLink>
+      <StyledLink to="send-bot-command">
+        <span className="material-icons">send</span>
+        Отправка команды боту
+      </StyledLink>
       <StyledLink to="open-settings">
         <span className="material-icons">settings</span>
         Открытие экрана настроек
@@ -150,6 +154,22 @@ const ClientFeatures: FC = () => {
       <StyledLink to="max-file-size">
         <span className="material-icons">file_present</span>
         Ограничение размера файла
+      </StyledLink>
+      <StyledLink to="hide-log-data">
+        <span className="material-icons">text_snippet</span>
+        Скрытие данных в логах
+      </StyledLink>
+      <StyledLink to="clean-cache">
+        <span className="material-icons">folder_off</span>
+        Очистка кеша статики
+      </StyledLink>
+      <StyledLink to="antimalware">
+        <span className="material-icons">bug_report</span>
+        Антивирусная проверка файлов
+      </StyledLink>
+      <StyledLink to="app-visibility">
+        <span className="material-icons">visibility_off</span>
+        Видимость окна SmartApp
       </StyledLink>
     </>
   )

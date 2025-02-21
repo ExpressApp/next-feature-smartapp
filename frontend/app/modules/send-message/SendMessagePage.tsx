@@ -25,7 +25,7 @@ const SendMessagePage: FC = () => {
 
   return (
     <FeaturePage>
-      <FeatureHeader name="Получение контакта из локальной книги" />
+      <FeatureHeader name="Отправка сообщения в чат" />
       Сообщение
       <Input onChange={handleMessageChange} value={message} id="message" />
       ID чата

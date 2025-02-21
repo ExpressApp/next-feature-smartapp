@@ -2,13 +2,15 @@ import * as SDK from '@expressms/smartapp-sdk'
 import { RootStore } from '../../store/rootStore'
 import { STATUS, StatusResponse } from '@expressms/smartapp-sdk/build/main/types'
 import { makeAutoObservable, runInAction } from 'mobx'
-import { FileData, FileTextResponse, UploadFileResponse, UploadFilesResponse } from './bot-command.types'
+import { FileData, AttrResponse, UploadFileResponse, UploadFilesResponse } from './bot-command.types'
 
 export class BotCommandStore {
   rootStore: RootStore
   response: object | null
   files: FileData[]
-  filesResponse: FileTextResponse[]
+  filesResponse: AttrResponse[]
+  huidsResponse: AttrResponse[]
+  isLoading: boolean
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this)
@@ -17,6 +19,8 @@ export class BotCommandStore {
     this.response = null
     this.files = []
     this.filesResponse = []
+    this.huidsResponse = []
+    this.isLoading = false
   }
 
   async sendTextAppEvent(method: string, formData: object): Promise<void> {
@@ -27,11 +31,20 @@ export class BotCommandStore {
       })) as StatusResponse
 
       if (response.payload.status === STATUS.ERROR) {
-        this.rootStore.toastStore.showToast(`Ошибка прие отправке команды ${response.payload.errorCode}`)
+        this.rootStore.toastStore.showToast(`Ошибка при отправке команды ${response.payload.errorCode}`)
       }
 
       runInAction(() => {
         this.response = response
+
+        if (method === 'send_notification') {
+          this.rootStore.toastStore.showToast('NotificationStatus: ok', 6000)
+        }
+
+        if (method === 'search_users') {
+          // @ts-expect-error: object cast error
+          this.huidsResponse = this.parseTextResponse(response.payload?.result)
+        }
       })
     } catch (e) {
       this.rootStore.toastStore.showToast(`Ошибка при отправке команды ${e?.message}`)
@@ -81,12 +94,15 @@ export class BotCommandStore {
     this.filesResponse = []
   }
 
-  private parseFilesResponse(text: string): Array<FileTextResponse> {
+  clearHuids() {
+    this.huidsResponse = []
+  }
+
+  private parseTextResponse(text: string): Array<AttrResponse> {
     return text
       .split('\n')
       .filter(textRow => !!textRow.trim())
       .map(textRow => {
-        console.log(textRow)
         const [attr, rawText] = textRow.split(':')
         return {
           attr,
@@ -97,10 +113,13 @@ export class BotCommandStore {
 
   async sendFileAppEvent(method: string): Promise<void> {
     try {
+      runInAction(() => (this.isLoading = true))
+
       const response = (await SDK.Bridge?.sendBotEvent({
         method,
         params: { type: '' },
         files: this.files,
+        timeout: 60000,
       })) as StatusResponse
 
       if (response.payload.status === STATUS.ERROR) {
@@ -111,10 +130,12 @@ export class BotCommandStore {
         this.response = response
 
         // @ts-expect-error: object cast error
-        this.filesResponse = this.parseFilesResponse(response.payload?.result)
+        this.filesResponse = this.parseTextResponse(response.payload?.result)
       })
     } catch (e) {
       this.rootStore.toastStore.showToast(`Ошибка при отправке команды с файлами ${e?.message}`)
+    } finally {
+      runInAction(() => (this.isLoading = false))
     }
   }
 }

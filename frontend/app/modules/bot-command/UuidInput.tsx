@@ -21,7 +21,7 @@ const UuidInput: FC<UuidInputProps> = ({ id, label, onChange }) => {
     <>
       {label}
       {uuids.map((text, idx) => (
-        <Input key={idx} id={`${id}{idx}`} value={text} onChange={handleChange(idx)} />
+        <Input key={idx} id={`huid${idx + 1}`} value={text} onChange={handleChange(idx)} />
       ))}
       <Button id="add" icon="add" onClick={addUuid} title="HUID" />
       <br />
