@@ -18,6 +18,11 @@ export class SearchPhonebookStore {
   async searchLocalPhonebook(filter: string) {
     const response = await SDK.searchLocalPhonebook({ filter })
 
+    if (response.payload.status === STATUS.ERROR) {
+      this.rootStore.toastStore.showToast(`Ошибка поиска локальных контактов ${response.payload.errorCode}`)
+      return
+    }
+
     runInAction(() => {
       this.phonebook = response.payload
     })
@@ -27,7 +32,7 @@ export class SearchPhonebookStore {
     const response = (await SDK.searchCorporatePhonebook({ filter, exactMatch })) as SearchCorpPhonebookResponse
 
     if (response.payload.status === STATUS.ERROR) {
-      this.rootStore.toastStore.showToast(`Error search corp phonebook ${response.payload.errorCode}`)
+      this.rootStore.toastStore.showToast(`Ошибка поиска корпоративных контактов ${response.payload.errorCode}`)
       return
     }
 
