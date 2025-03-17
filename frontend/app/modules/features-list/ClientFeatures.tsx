@@ -171,6 +171,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">visibility_off</span>
         Видимость окна SmartApp
       </StyledLink>
+      <StyledLink to="smartapp-list">
+        <span className="material-icons">list</span>
+        Список SmartApp
+      </StyledLink>
     </>
   )
 }

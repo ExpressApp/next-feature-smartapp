@@ -42,6 +42,7 @@ import HideLogsPage from '../hide-logs/HideLogsPage'
 import CleanCachePage from '../clean-cache/CleanCachePage'
 import AntimalwarePage from '../antimalware/AntimalwarePage'
 import AppVisibilityPage from '../app-visibility/AppVisibilityPage'
+import GetSmartAppListPage from '../get-smartapp-list/GetSmartAppListPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -110,6 +111,7 @@ const FeaturesListPage = () => {
           <Route path="/clean-cache" element={<CleanCachePage />} />
           <Route path="/antimalware" element={<AntimalwarePage />} />
           <Route path="/app-visibility" element={<AppVisibilityPage />} />
+          <Route path="/smartapp-list" element={<GetSmartAppListPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}

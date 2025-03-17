@@ -34,6 +34,7 @@ import { HideLogsStore } from '../modules/hide-logs/hide-logs.store'
 import { CleanCacheStore } from '../modules/clean-cache/clean-cache.store'
 import { AntimalwareStore } from '../modules/antimalware/antimalware.store'
 import { AppVisibilityStore } from '../modules/app-visibility/app-visibility.store'
+import { GetSmartAppListStore } from '../modules/get-smartapp-list/get-smartapp-list.store'
 
 export class RootStore {
   appStore: AppStore
@@ -72,6 +73,7 @@ export class RootStore {
   cleanCacheStore: CleanCacheStore
   antimalwareStore: AntimalwareStore
   appVisibilityStore: AppVisibilityStore
+  getSmartAppListStore: GetSmartAppListStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -110,5 +112,6 @@ export class RootStore {
     this.cleanCacheStore = new CleanCacheStore(this)
     this.antimalwareStore = new AntimalwareStore(this)
     this.appVisibilityStore = new AppVisibilityStore(this)
+    this.getSmartAppListStore = new GetSmartAppListStore(this)
   }
 }

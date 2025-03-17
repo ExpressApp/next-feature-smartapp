@@ -2,5 +2,5 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Показ ошибки поиска по локальной фонбуке"
+  "changeLog": "Запрос списка SmartApp"
 }
