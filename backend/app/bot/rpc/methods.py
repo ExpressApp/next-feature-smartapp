@@ -226,7 +226,10 @@ async def echo_static_file(smartapp: SmartApp) -> RPCResultResponse[str]:
 class GetExampleFileArgs(RPCArgsBaseModel):
     file_type: str
 
-@rpc.feature("get_example_file", name="Example file", ui_elements=[ui_elements.file_type])
+
+@rpc.feature(
+    "get_example_file", name="Example file", ui_elements=[ui_elements.file_type]
+)
 async def get_example_file(
     smartapp: SmartApp, rpc_arguments: GetExampleFileArgs
 ) -> RPCResultResponse[str]:

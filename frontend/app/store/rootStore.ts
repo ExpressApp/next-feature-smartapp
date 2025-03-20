@@ -35,6 +35,7 @@ import { CleanCacheStore } from '../modules/clean-cache/clean-cache.store'
 import { AntimalwareStore } from '../modules/antimalware/antimalware.store'
 import { AppVisibilityStore } from '../modules/app-visibility/app-visibility.store'
 import { GetSmartAppListStore } from '../modules/get-smartapp-list/get-smartapp-list.store'
+import { SetCookiesStore } from '../modules/set-cookies/set-cookies.store'
 
 export class RootStore {
   appStore: AppStore
@@ -74,6 +75,7 @@ export class RootStore {
   antimalwareStore: AntimalwareStore
   appVisibilityStore: AppVisibilityStore
   getSmartAppListStore: GetSmartAppListStore
+  setCookiesStore: SetCookiesStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -113,5 +115,6 @@ export class RootStore {
     this.antimalwareStore = new AntimalwareStore(this)
     this.appVisibilityStore = new AppVisibilityStore(this)
     this.getSmartAppListStore = new GetSmartAppListStore(this)
+    this.setCookiesStore = new SetCookiesStore(this)
   }
 }

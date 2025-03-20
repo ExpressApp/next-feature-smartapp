@@ -175,6 +175,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">list</span>
         Список SmartApp
       </StyledLink>
+      <StyledLink to="set-cookies">
+        <span className="material-icons">cookie</span>
+        Установка cookie на другой веб ресурс
+      </StyledLink>
     </>
   )
 }

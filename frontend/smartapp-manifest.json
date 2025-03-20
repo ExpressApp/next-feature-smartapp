@@ -2,5 +2,5 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Запрос списка SmartApp"
+  "changeLog": "Установка cookie на другой web ресурс"
 }

@@ -43,6 +43,7 @@ import CleanCachePage from '../clean-cache/CleanCachePage'
 import AntimalwarePage from '../antimalware/AntimalwarePage'
 import AppVisibilityPage from '../app-visibility/AppVisibilityPage'
 import GetSmartAppListPage from '../get-smartapp-list/GetSmartAppListPage'
+import SetCookiesPage from '../set-cookies/SetCookiesPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -112,6 +113,7 @@ const FeaturesListPage = () => {
           <Route path="/antimalware" element={<AntimalwarePage />} />
           <Route path="/app-visibility" element={<AppVisibilityPage />} />
           <Route path="/smartapp-list" element={<GetSmartAppListPage />} />
+          <Route path="/set-cookies" element={<SetCookiesPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}
