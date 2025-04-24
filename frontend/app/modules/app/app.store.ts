@@ -62,4 +62,22 @@ export class AppStore {
     const isRoot = pathname === '/'
     SDK.routingChanged(isRoot)?.catch(() => {})
   }
+
+  handleRedirectReason() {
+    const redirectReason = new URLSearchParams(location.search).get('redirect_reason')
+    switch (redirectReason) {
+      case 'general_error':
+        location.hash = '/web-commands-pipeline-error'
+        break
+      case 'wrong_credentials':
+        location.hash = '/web-commands-pipeline'
+        this.rootStore.toastStore.showToast('Неверный логин/пароль')
+        break
+      case null:
+        break
+      default:
+        this.rootStore.toastStore.showToast('Неверный redirect_reason')
+        break
+    }
+  }
 }

@@ -14,6 +14,7 @@ const App = () => {
   useEffect(() => {
     store.sendReady()
     store.subscribeBridgeOnReceive()
+    store.handleRedirectReason()
   }, [])
 
   useEffect(() => {

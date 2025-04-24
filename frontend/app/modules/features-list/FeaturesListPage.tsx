@@ -44,6 +44,9 @@ import AntimalwarePage from '../antimalware/AntimalwarePage'
 import AppVisibilityPage from '../app-visibility/AppVisibilityPage'
 import GetSmartAppListPage from '../get-smartapp-list/GetSmartAppListPage'
 import SetCookiesPage from '../set-cookies/SetCookiesPage'
+import CredentialsPage from '../credentials/CredentialsPage'
+import WebCommandsPipelinePage from '../web-commands-pipeline/WebCommandsPipelinePage'
+import { WebCommandsPipelineErrorPage } from '../web-commands-pipeline/WebCommandsPipelineErrorPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -114,6 +117,9 @@ const FeaturesListPage = () => {
           <Route path="/app-visibility" element={<AppVisibilityPage />} />
           <Route path="/smartapp-list" element={<GetSmartAppListPage />} />
           <Route path="/set-cookies" element={<SetCookiesPage />} />
+          <Route path="/credentials" element={<CredentialsPage />} />
+          <Route path="/web-commands-pipeline" element={<WebCommandsPipelinePage />} />
+          <Route path="/web-commands-pipeline-error" element={<WebCommandsPipelineErrorPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}

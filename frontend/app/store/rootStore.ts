@@ -36,6 +36,8 @@ import { AntimalwareStore } from '../modules/antimalware/antimalware.store'
 import { AppVisibilityStore } from '../modules/app-visibility/app-visibility.store'
 import { GetSmartAppListStore } from '../modules/get-smartapp-list/get-smartapp-list.store'
 import { SetCookiesStore } from '../modules/set-cookies/set-cookies.store'
+import { CredentialsStore } from '../modules/credentials/credentials.store'
+import { WebCommandsPipelineStore } from '../modules/web-commands-pipeline/web-commands-pipeline.store'
 
 export class RootStore {
   appStore: AppStore
@@ -76,6 +78,8 @@ export class RootStore {
   appVisibilityStore: AppVisibilityStore
   getSmartAppListStore: GetSmartAppListStore
   setCookiesStore: SetCookiesStore
+  credentialsStore: CredentialsStore
+  webCommandsPipelineStore: WebCommandsPipelineStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -116,5 +120,7 @@ export class RootStore {
     this.appVisibilityStore = new AppVisibilityStore(this)
     this.getSmartAppListStore = new GetSmartAppListStore(this)
     this.setCookiesStore = new SetCookiesStore(this)
+    this.credentialsStore = new CredentialsStore(this)
+    this.webCommandsPipelineStore = new WebCommandsPipelineStore(this)
   }
 }
