@@ -168,7 +168,7 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">schema</span>
         Авторизация на сайте
       </StyledLink>
-      <Subtitle>Прочее</Subtitle>
+      <Subtitle>Оборудование</Subtitle>
       <StyledLink to="scan-qr">
         <span className="material-icons">qr_code</span>
         Сканирование QR
@@ -177,6 +177,15 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">my_location</span>
         Запрос местоположения
       </StyledLink>
+      <StyledLink to="bluetooth">
+        <span className="material-icons">bluetooth</span>
+        Bluetooth
+      </StyledLink>
+      <StyledLink to="nfc">
+        <span className="material-icons">nfc</span>
+        NFC
+      </StyledLink>
+      <Subtitle>Прочее</Subtitle>
       <StyledLink to="connection-status">
         <span className="material-icons">wifi_off</span>
         Статус подключения к серверу

@@ -38,6 +38,8 @@ import { GetSmartAppListStore } from '../modules/get-smartapp-list/get-smartapp-
 import { SetCookiesStore } from '../modules/set-cookies/set-cookies.store'
 import { CredentialsStore } from '../modules/credentials/credentials.store'
 import { WebCommandsPipelineStore } from '../modules/web-commands-pipeline/web-commands-pipeline.store'
+import { NfcStore } from '../modules/nfc/nfc.store'
+import { BluetoothStore } from '../modules/bluetooth/bluetooth.store'
 
 export class RootStore {
   appStore: AppStore
@@ -80,6 +82,8 @@ export class RootStore {
   setCookiesStore: SetCookiesStore
   credentialsStore: CredentialsStore
   webCommandsPipelineStore: WebCommandsPipelineStore
+  nfcStore: NfcStore
+  bluetoothStore: BluetoothStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -122,5 +126,7 @@ export class RootStore {
     this.setCookiesStore = new SetCookiesStore(this)
     this.credentialsStore = new CredentialsStore(this)
     this.webCommandsPipelineStore = new WebCommandsPipelineStore(this)
+    this.nfcStore = new NfcStore(this)
+    this.bluetoothStore = new BluetoothStore(this)
   }
 }
