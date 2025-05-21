@@ -2,6 +2,7 @@ import * as SDK from '@expressms/smartapp-sdk'
 import { RootStore } from '../../store/rootStore'
 import { STATUS } from '@expressms/smartapp-sdk/build/main/types'
 import { makeAutoObservable, runInAction } from 'mobx'
+import { CredentialsType } from '@expressms/smartapp-sdk/build/main/types/proxy'
 
 export class CredentialsStore {
   rootStore: RootStore
@@ -14,9 +15,9 @@ export class CredentialsStore {
     this.response = null
   }
 
-  async setCredentials(login: string, password: string): Promise<void> {
-    try {
-      const response = await SDK.setCredentials({ login, password })
+  async setCredentials(login: string, password: string, type: CredentialsType): Promise<void> {
+    try { 
+      const response = await SDK.setCredentials({ login, password, type })
 
       if (response.payload.status === STATUS.ERROR) {
         this.rootStore.toastStore.showToast(`Ошибка сохранения логина/пароля ${response.payload.errorCode}`)
@@ -42,6 +43,21 @@ export class CredentialsStore {
       })
     } catch (e) {
       this.rootStore.toastStore.showToast(`Ошибка получения логина/пароля ${e?.message}`)
+    }
+  }
+
+  async deleteCredentials(): Promise<void> {
+    try {
+      const response = await SDK.deleteCredentials()
+
+      if (response.payload.status === STATUS.ERROR) {
+        this.rootStore.toastStore.showToast(`Ошибка удаления логина/пароля ${response.payload.errorCode}`)
+        return
+      }
+
+      this.rootStore.toastStore.showToast('Логин/пароль удалены')
+    } catch (e) {
+      this.rootStore.toastStore.showToast(`Ошибка удаления логина/пароля ${e?.message}`)
     }
   }
 }

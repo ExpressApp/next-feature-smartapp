@@ -6,21 +6,44 @@ import Input from '../../components/Input'
 import JsonViewer from '../../components/JsonViewer'
 import Button from '../../components/Button'
 import FeaturePage from '../../components/FeaturePage'
+import styled from 'styled-components'
+import { CredentialsType } from '@expressms/smartapp-sdk/build/main/types/proxy'
+
+const Select = styled.select`
+  padding: 12px 20px;
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid var(--light-grey);
+  border-radius: 3px;
+  font-size: 14px;
+  color: var(--font-color);
+  box-sizing: border-box;
+  background-color: var(--input-bg);
+`
 
 const CredentialsPage: FC = () => {
   const { credentialsStore: store } = useStore()
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
+  const [type, setType] = useState<CredentialsType>('login_password')
 
   const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => setLogin(event.target.value)
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value)
+  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) =>
+    setType(event.target.value as CredentialsType)
 
-  const handleSetCredentials = () => store.setCredentials(login, password)
+  const handleSetCredentials = () => store.setCredentials(login, password, type)
   const handleGetCredentials = () => store.getCredentials()
+  const handleDeleteCredentials = () => store.deleteCredentials()
 
   return (
     <FeaturePage>
       <FeatureHeader name="Хранение паролей" />
+      Тип
+      <Select className="input" onChange={handleTypeChange} defaultValue={type} id="type-select">
+        <option value="login_password">Логин, пароль</option>
+        <option value="cookie">Cookie</option>
+      </Select>
       Логин
       <Input onChange={handleLoginChange} value={login} id="login" />
       Пароль
@@ -31,6 +54,7 @@ const CredentialsPage: FC = () => {
       <Button onClick={handleGetCredentials} id="get-creds" title="Загрузить" />
       <br />
       <br />
+      <Button onClick={handleDeleteCredentials} id="del-creds" title="Удалить" />
       {store.response && <JsonViewer data={store.response} id="response" />}
     </FeaturePage>
   )

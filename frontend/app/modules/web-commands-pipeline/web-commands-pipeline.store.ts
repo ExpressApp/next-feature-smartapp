@@ -20,31 +20,14 @@ export class WebCommandsPipelineStore {
       {
         commands: [
           {
-            type: 'search_element',
-            xpath: 'nav#user-menu',
-          },
-        ],
-        interval: 100,
-        retryCount: 50,
-        onSuccess: [],
-        onError: {
-          command: {
-            type: 'open_url',
-            value: `${smartappUrl}&redirect_reason=general_error`,
-          },
-        },
-      },
-      {
-        commands: [
-          {
             type: 'set_input_value',
             xpath: 'input#user',
-            value: '<<LOGIN>>',
+            value: 'sergey.kravchenkov',
           },
           {
             type: 'set_input_value',
             xpath: 'input#password',
-            value: '<<PASSWORD>>',
+            value: 'dy6Gal4Em0pzIdLg',
           },
           {
             type: 'click_element',
@@ -54,23 +37,6 @@ export class WebCommandsPipelineStore {
         interval: 100,
         retryCount: 40,
         onSuccess: [
-          {
-            commands: [
-              {
-                type: 'search_element',
-                xpath: 'nav#user-menu',
-              },
-            ],
-            interval: 100,
-            retryCount: 50,
-            onSuccess: [],
-            onError: {
-              command: {
-                type: 'open_url',
-                value: `${smartappUrl}&redirect_reason=general_error`,
-              },
-            },
-          },
           {
             commands: [
               {
@@ -85,19 +51,32 @@ export class WebCommandsPipelineStore {
                 commands: [
                   {
                     type: 'open_url',
-                    value: `${smartappUrl}&redirect_reason=wrong_credentials`,
+                    value:
+                      'file:///Users/tim_i/Library/Developer/CoreSimulator/Devices/0125FBD1-1943-4A0E-8E30-457B0677C434/data/Containers/Shared/AppGroup/0DCD9FE4-E479-4291-87AF-716AB74A5AD5/Express/smartApps/0754b198-1a97-55d3-a04b-d0a1e2e44458/bundle/index.html?platform=ios&theme=dark&locale=en&redirect_reason=wrong_credentials',
                   },
                 ],
                 interval: 1,
                 retryCount: 1,
                 onSuccess: [],
-                onError: null,
+                onError: [],
               },
             ],
-            onError: null,
+            onError: [],
           },
         ],
-        onError: null,
+        onError: [],
+      },
+      {
+        commands: [
+          {
+            type: 'search_element',
+            xpath: 'nav#user-menu',
+          },
+        ],
+        interval: 100,
+        retryCount: 50,
+        onSuccess: [],
+        onError: [],
       },
     ]
   }
