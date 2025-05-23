@@ -16,7 +16,7 @@ export class CredentialsStore {
   }
 
   async setCredentials(login: string, password: string, type: CredentialsType): Promise<void> {
-    try { 
+    try {
       const response = await SDK.setCredentials({ login, password, type })
 
       if (response.payload.status === STATUS.ERROR) {

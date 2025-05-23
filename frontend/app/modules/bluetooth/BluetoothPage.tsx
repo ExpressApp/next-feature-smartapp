@@ -74,7 +74,12 @@ const BluetoothPage: FC = () => {
           [STEP.DEVICE_SCANNING]: (
             <Panel title="Сканирование устройств, подождите" showLoader>
               {store.devices.map(device => (
-                <PanelItem text={device.name || device.address} key={`${device.address}-scan`} icon="bluetooth" disabled />
+                <PanelItem
+                  text={device.name || device.address}
+                  key={`${device.address}-scan`}
+                  icon="bluetooth"
+                  disabled
+                />
               ))}
             </Panel>
           ),

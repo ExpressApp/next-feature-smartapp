@@ -12,8 +12,16 @@ const WebCommandsPipelinePage: FC = () => {
   const { webCommandsPipelineStore: store } = useStore()
 
   const [url, setUrl] = useState('https://nextcloud.ccsteam.ru')
-  const [pipeline, setPipeline] = useState(JSON.stringify(store.getDefaultPipeline(), null, 2))
+  const [pipeline, setPipeline] = useState(store.getPipelineText())
 
+  const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    store.setLogin(event.target.value)
+    setPipeline(store.getPipelineText())
+  }
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    store.setPassword(event.target.value)
+    setPipeline(store.getPipelineText())
+  }
   const handlePipelineChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => setPipeline(event.target.value)
   const handleUrlChange = (event: React.ChangeEvent<HTMLInputElement>) => setUrl(event.target.value)
 
@@ -27,6 +35,10 @@ const WebCommandsPipelinePage: FC = () => {
       <FeatureHeader name="Авторизация на сайте" />
       Сайт
       <Input onChange={handleUrlChange} value={url} id="url" />
+      Логин
+      <Input onChange={handleLoginChange} value={store.login} id="login" />
+      Пароль
+      <Input onChange={handlePasswordChange} value={store.password} id="password" type="password" />
       Пайплайн операций
       <TextArea onChange={handlePipelineChange} id="pipeline" value={pipeline} rows={30} />
       <Button onClick={handleSubmit} id="submit" title="Выполнить" />

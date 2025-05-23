@@ -27,8 +27,6 @@ export class AppStore {
       })
       return
     }
-
-    window.location.hash = '/'
   }
 
   private eventCallback({ type, payload }: EmitterEventPayload) {
