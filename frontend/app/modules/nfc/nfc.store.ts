@@ -1,6 +1,6 @@
 import * as SDK from '@expressms/smartapp-sdk'
 import { RootStore } from '../../store/rootStore'
-import { STATUS } from '@expressms/smartapp-sdk/build/main/types'
+import { NfcWriteMessage, STATUS } from '@expressms/smartapp-sdk/build/main/types'
 import { makeAutoObservable, runInAction } from 'mobx'
 
 export class NfcStore {
@@ -27,6 +27,18 @@ export class NfcStore {
       })
     } catch (e) {
       this.rootStore.toastStore.showToast(`Ошибка при чтении NFC метки ${e?.message}`)
+    }
+  }
+
+  async writeTag(messages: NfcWriteMessage[]): Promise<void> {
+    try {
+      const response = await SDK.NFC.writeTag(messages)
+
+      if (response.payload.status === STATUS.ERROR) {
+        this.rootStore.toastStore.showToast(`Ошибка при записи NFC метки ${response.payload.errorCode}`)
+      }
+    } catch (e) {
+      this.rootStore.toastStore.showToast(`Ошибка при записи NFC метки ${e?.message}`)
     }
   }
 }
