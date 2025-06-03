@@ -2,5 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Авторизация логином/паролем на веб ресурсе"
+  "changeLog": "ChangeLog без перевода",
+  "translations": {
+    "changeLog": {
+      "ru": "ChangeLog по-русски",
+      "en": "ChangeLog in english"
+    }
+  }
 }
