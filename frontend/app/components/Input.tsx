@@ -2,8 +2,13 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import Icon from '../assets/clear-input.svg'
 
+const Div = styled.div`
+  position: relative;
+  width: 100%;
+`
+
 const InputStyled = styled.input.attrs({ className: 'input' })`
-  padding: 12px 20px;
+  padding: 12px 32px 12px 20px;
   margin: 10px 0;
   width: 100%;
   border: 1px solid var(--light-grey);
@@ -46,10 +51,10 @@ const Input: FC<Props> = props => {
   }
 
   return (
-    <>
+    <Div>
       <InputStyled {...props} />
       {!props.type && !!props.value && <CloseIcon onClick={handleClear} id={`${props.id}.field-clear`} />}
-    </>
+    </Div>
   )
 }
 

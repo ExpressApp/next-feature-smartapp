@@ -34,6 +34,12 @@ import { HideLogsStore } from '../modules/hide-logs/hide-logs.store'
 import { CleanCacheStore } from '../modules/clean-cache/clean-cache.store'
 import { AntimalwareStore } from '../modules/antimalware/antimalware.store'
 import { AppVisibilityStore } from '../modules/app-visibility/app-visibility.store'
+import { GetSmartAppListStore } from '../modules/get-smartapp-list/get-smartapp-list.store'
+import { SetCookiesStore } from '../modules/set-cookies/set-cookies.store'
+import { CredentialsStore } from '../modules/credentials/credentials.store'
+import { WebCommandsPipelineStore } from '../modules/web-commands-pipeline/web-commands-pipeline.store'
+import { NfcStore } from '../modules/nfc/nfc.store'
+import { BluetoothStore } from '../modules/bluetooth/bluetooth.store'
 
 export class RootStore {
   appStore: AppStore
@@ -72,6 +78,12 @@ export class RootStore {
   cleanCacheStore: CleanCacheStore
   antimalwareStore: AntimalwareStore
   appVisibilityStore: AppVisibilityStore
+  getSmartAppListStore: GetSmartAppListStore
+  setCookiesStore: SetCookiesStore
+  credentialsStore: CredentialsStore
+  webCommandsPipelineStore: WebCommandsPipelineStore
+  nfcStore: NfcStore
+  bluetoothStore: BluetoothStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -110,5 +122,11 @@ export class RootStore {
     this.cleanCacheStore = new CleanCacheStore(this)
     this.antimalwareStore = new AntimalwareStore(this)
     this.appVisibilityStore = new AppVisibilityStore(this)
+    this.getSmartAppListStore = new GetSmartAppListStore(this)
+    this.setCookiesStore = new SetCookiesStore(this)
+    this.credentialsStore = new CredentialsStore(this)
+    this.webCommandsPipelineStore = new WebCommandsPipelineStore(this)
+    this.nfcStore = new NfcStore(this)
+    this.bluetoothStore = new BluetoothStore(this)
   }
 }

@@ -2,7 +2,7 @@
 
 from http import HTTPStatus
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Response
 from fastapi.responses import JSONResponse
 from pybotx import (
     Bot,
@@ -108,3 +108,18 @@ async def callback_handler(request: Request, bot: Bot = bot_dependency) -> JSONR
         build_command_accepted_response(),
         status_code=HTTPStatus.ACCEPTED,
     )
+
+
+@router.options("/smartapp_files/static/api/cookies")
+async def cookies_opts(response: Response, request: Request):
+    response.headers["access-control-request-method"] = "GET, POST, DELETE, PUT, OPTIONS"
+    response.headers["access-control-allow-origin"] = request.headers.get("origin")
+    response.headers["access-control-allow-credentials"] = 'true'
+
+
+@router.get("/smartapp_files/static/api/cookies")
+async def cookies_get(request: Request, response: Response):
+    headers = {key: value for key, value in request.headers.items()}
+    response.headers["access-control-allow-origin"] = request.headers.get("origin") or 'null'
+    response.headers["access-control-allow-credentials"] = 'true'
+    return {"headers": headers}
