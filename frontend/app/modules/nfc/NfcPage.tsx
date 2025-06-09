@@ -7,7 +7,6 @@ import Button from '../../components/Button'
 import FeaturePage from '../../components/FeaturePage'
 import Input from '../../components/Input'
 import styled from 'styled-components'
-import { NfcWriteMessage } from '@expressms/smartapp-sdk/build/main/types'
 
 const Buttons = styled.div`
   display: flex;

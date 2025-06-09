@@ -2,7 +2,7 @@ import * as SDK from '@expressms/smartapp-sdk'
 import { RootStore } from '../../store/rootStore'
 import { STATUS, StatusResponse } from '@expressms/smartapp-sdk/build/main/types'
 import { makeAutoObservable, runInAction } from 'mobx'
-import { FileData, AttrResponse, UploadFileResponse, UploadFilesResponse } from './bot-command.types'
+import { FileData, AttrResponse } from './bot-command.types'
 
 export class BotCommandStore {
   rootStore: RootStore
@@ -56,32 +56,30 @@ export class BotCommandStore {
   }
 
   async uploadFiles() {
-    const response = (await SDK.Bridge?.sendClientEvent({
-      method: 'upload_files',
-      params: { type: '' },
-    })) as UploadFilesResponse
+    const response = await SDK.uploadFiles({
+      mimeType: '',
+    })
 
     if (response?.payload?.status === STATUS.ERROR) {
       this.rootStore.toastStore.showToast(`Ошибка при загрузке файла ${response?.payload?.errorCode}`)
     }
 
     runInAction(() => {
-      this.files = response?.payload?.records
+      this.files = response?.payload?.records as FileData[]
     })
   }
 
   async uploadFile() {
-    const response = (await SDK.Bridge?.sendClientEvent({
-      method: 'upload_file',
-      params: { type: '' },
-    })) as UploadFileResponse
+    const response = await SDK.uploadFile({
+      mimeType: '',
+    })
 
     if (response?.payload?.status === STATUS.ERROR) {
       this.rootStore.toastStore.showToast(`Ошибка при загрузке файла ${response?.payload?.errorCode}`)
     }
 
     runInAction(() => {
-      this.files = [response?.payload?.record]
+      this.files = [response?.payload?.record as FileData]
     })
   }
 

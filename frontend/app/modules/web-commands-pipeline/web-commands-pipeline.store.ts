@@ -95,7 +95,7 @@ export class WebCommandsPipelineStore {
   }
 
   getPipelineText(): string {
-    return JSON.stringify(this.getPipeline(), null, 2);
+    return JSON.stringify(this.getPipeline(), null, 2)
   }
 
   async runWebCommandsPipeline(url: string, pipeline: WebCommandsPipeline) {
