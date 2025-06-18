@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Фиксики",
+  "changeLog": "setAllowedNavigationDomains",
   "translations": {
     "changeLog": {
-      "ru": "Фиксики",
-      "en": "Some fixes"
+      "ru": "setAllowedNavigationDomains",
+      "en": "setAllowedNavigationDomains"
     }
   }
 }

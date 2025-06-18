@@ -168,6 +168,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">schema</span>
         Авторизация на сайте
       </StyledLink>
+      <StyledLink to="set-domains">
+        <span className="material-icons">domain</span>
+        Открытие сайта без перехода в браузер
+      </StyledLink>
       <Subtitle>Оборудование</Subtitle>
       <StyledLink to="scan-qr">
         <span className="material-icons">qr_code</span>

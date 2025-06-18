@@ -49,6 +49,7 @@ import WebCommandsPipelinePage from '../web-commands-pipeline/WebCommandsPipelin
 import { WebCommandsPipelineErrorPage } from '../web-commands-pipeline/WebCommandsPipelineErrorPage'
 import NfcPage from '../nfc/NfcPage'
 import BluetoothPage from '../bluetooth/BluetoothPage'
+import SetAllowedDomainsPage from '../set-allowed-domains/SetAllowedDomainsPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -124,6 +125,8 @@ const FeaturesListPage = () => {
           <Route path="/web-commands-pipeline-error" element={<WebCommandsPipelineErrorPage />} />
           <Route path="/nfc" element={<NfcPage />} />
           <Route path="/bluetooth" element={<BluetoothPage />} />
+          <Route path="/bluetooth" element={<BluetoothPage />} />
+          <Route path="/set-domains" element={<SetAllowedDomainsPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}
