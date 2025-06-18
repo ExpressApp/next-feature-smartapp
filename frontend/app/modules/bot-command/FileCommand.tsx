@@ -48,15 +48,9 @@ const FileCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
     }
   }
 
-  const removeFile = (e: React.MouseEvent<HTMLOrSVGElement>) => {
-    // @ts-expect-error: cast error
-    const fileId = e.target.parentElement.id
-    fileId && store.removeFile(fileId)
-  }
+  const removeFile = (fileId: string) => store.removeFile(fileId)
 
-  const handleSubmit = () => {
-    store.sendFileAppEvent(botFeature.method)
-  }
+  const handleSubmit = () => store.sendFileAppEvent(botFeature.method)
 
   return (
     <>
@@ -66,7 +60,7 @@ const FileCommand: FC<BotCommandPageProps> = ({ botFeature }) => {
       {store.files.map(file => (
         <FileDiv key={file.fileId} id={file.fileId}>
           {file.fileName}
-          <RemoveIcon onClick={removeFile} />
+          <RemoveIcon onClick={() => removeFile(file.fileId)} />
         </FileDiv>
       ))}
       <br />
