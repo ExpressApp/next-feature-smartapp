@@ -1,36 +1,36 @@
 import * as SDK from '@expressms/smartapp-sdk'
-import { EmitterEventPayload } from '@expressms/smartapp-bridge/build/main/types/eventEmitter.d'
 import { RootStore } from '../../store/rootStore'
 import { makeAutoObservable } from 'mobx'
+import { SubscriptionEventType } from '@expressms/smartapp-sdk/build/main/types'
 
 export class IosSwipeStore {
   rootStore: RootStore
-  showIosSwipeToast: boolean
-  private callbackAlreadySet: boolean
+  allowIosSwipe: boolean
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this)
 
     this.rootStore = rootStore
-    this.showIosSwipeToast = false
-    this.callbackAlreadySet = false
+    this.allowIosSwipe = true
   }
 
-  onReceive(event: EmitterEventPayload) {
-    if (event.type === 'ios_swipe' && this.showIosSwipeToast) {
-      this.rootStore.toastStore.showToast('Получено событие ios_swipe')
-    }
+  async subscribeIosSwipeEvent() {
+    await SDK.subscribeClientEvents({
+      eventType: SubscriptionEventType.IOS_SWIPE,
+      callback: this.rootStore.appStore.iosSwipeCallback,
+    })
+    console.log('Subscribed ios_swipe')
   }
 
-  subscribeIosSwipeEvent() {
-    if (!this.callbackAlreadySet) {
-      SDK.Bridge?.onReceive(this.onReceive.bind(this))
-      this.callbackAlreadySet = true
-    }
-    this.showIosSwipeToast = true
+  async unsubscribeIosSwipeEvent() {
+    await SDK.unsubscribeClientEvents({
+      eventType: SubscriptionEventType.IOS_SWIPE,
+      callback: this.rootStore.appStore.iosSwipeCallback,
+    })
   }
 
-  unsubscribeIosSwipeEvent() {
-    this.showIosSwipeToast = false
+  async setAllowIosSwipe(allowed: boolean) {
+    this.allowIosSwipe = allowed
+    await SDK.iOS.allowSwipeNavigation(allowed)
   }
 }

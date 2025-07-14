@@ -1,17 +1,23 @@
 import * as SDK from '@expressms/smartapp-sdk'
 import { EmitterEventPayload } from '@expressms/smartapp-bridge/build/main/types/eventEmitter.d'
 import { RootStore } from '../../store/rootStore'
-import { Methods } from './app.types'
+import { IosSwipeSubscriptionEvent, Methods } from './app.types'
 import { runInAction } from 'mobx'
 
 export class AppStore {
   rootStore: RootStore
   isLoaded: boolean
   platform: string
+  iosSwipeCallback: () => void
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore
     this.platform = new URLSearchParams(window.location.search).get('platform') || 'unknown'
+    this.iosSwipeCallback = this.iosSwipeCallbackFunc.bind(this)
+  }
+
+  private iosSwipeCallbackFunc(event: IosSwipeSubscriptionEvent) {
+    this.rootStore.toastStore.showToast(`Получено событие ios_swipe, ${JSON.stringify(event.payload)}`)
   }
 
   async sendReady(): Promise<void> {
@@ -32,8 +38,6 @@ export class AppStore {
   private eventCallback({ type, payload }: EmitterEventPayload) {
     if (typeof payload !== 'object') return
 
-    const showIosSwipeToast = this.rootStore.iosSwipeStore.showIosSwipeToast
-
     switch (type) {
       case Methods.CLEAN_CACHE:
       case Methods.MOVE_TO_ROOT:
@@ -43,9 +47,6 @@ export class AppStore {
         if (window.location.hash !== '#/') {
           window.location.hash = '#/'
         }
-        break
-      case Methods.IOS_SWIPE:
-        if (showIosSwipeToast) this.rootStore.toastStore.showToast(`Получено событие ${type}`)
         break
       default:
         break

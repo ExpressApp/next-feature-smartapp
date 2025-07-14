@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "setAllowedNavigationDomains",
+  "changeLog": "Разрешение iOS свайпов",
   "translations": {
     "changeLog": {
-      "ru": "setAllowedNavigationDomains",
-      "en": "setAllowedNavigationDomains"
+      "ru": "Разрешение iOS свайпов",
+      "en": "Block iOS swipes"
     }
   }
 }
