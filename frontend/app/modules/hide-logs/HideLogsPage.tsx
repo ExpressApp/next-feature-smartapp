@@ -4,6 +4,7 @@ import { useStore } from '../../hooks/useStore'
 import FeatureHeader from '../../components/FeatureHeader'
 import JsonViewer from '../../components/JsonViewer'
 import Button from '../../components/Button'
+import Buttons from '../../components/Buttons'
 import FeaturePage from '../../components/FeaturePage'
 
 const HideLogsPage: FC = () => {
@@ -11,15 +12,22 @@ const HideLogsPage: FC = () => {
   const [hideSend, setHideSend] = useState(false)
   const [hideRecv, setHideRecv] = useState(false)
 
-  const handleSubmit = () => store.sendEvent(hideSend, hideRecv)
+  const handleSendEvent = () => store.sendEvent(hideSend, hideRecv)
 
   const handleToggleSend = () => setHideSend(!hideSend)
 
   const handleToggleRecv = () => setHideRecv(!hideRecv)
 
+  const handleHideNullRefEvent = () => store.handleHideNullRefEvent()
+
+  const handleGenerateNullRefEvent = () => store.handleGenerateNullRefEvent()
+
   return (
     <FeaturePage>
       <FeatureHeader name="Скрытие данных в логах" />
+      Cобытия от frontend
+      <br />
+      <br />
       <input
         className="checkbox"
         checked={hideSend}
@@ -42,7 +50,16 @@ const HideLogsPage: FC = () => {
       <label htmlFor="hide-recv">скрыть принимаемые данные</label>
       <br />
       <br />
-      <Button onClick={handleSubmit} id="submit" title="Отправить событие" icon="send" />
+      <Button onClick={handleSendEvent} id="submit" title="Отправить событие" icon="send" />
+      <br />
+      <br />
+      <br />
+      Cобытия от backend
+      <br />
+      <Buttons>
+        <Button onClick={handleHideNullRefEvent} id="submit-hide" title="Выкл. логи" icon="close" />
+        <Button onClick={handleGenerateNullRefEvent} id="submit-null-ref" title="Событие" icon="send" />
+      </Buttons>
       <br />
       <br />
       {store.response && <JsonViewer data={store.response} id="response" />}

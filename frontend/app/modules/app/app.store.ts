@@ -48,6 +48,9 @@ export class AppStore {
           window.location.hash = '#/'
         }
         break
+      case Methods.SMARTAPP_RPC:
+        this.rootStore.toastStore.showToast(`Пришло асинхронное событие от бота, см. в логах`)
+        break
       default:
         break
     }

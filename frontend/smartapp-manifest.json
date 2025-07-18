@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Разрешение iOS свайпов",
+  "changeLog": "Скрытие данных в логах",
   "translations": {
     "changeLog": {
-      "ru": "Разрешение iOS свайпов",
-      "en": "Block iOS swipes"
+      "ru": "Скрытие данных в логах",
+      "en": "Hide recv data in logs"
     }
   }
 }

@@ -6,6 +6,7 @@ import { BotMenuResponse } from '../features-list/features.types'
 export class HideLogsStore {
   rootStore: RootStore
   response: object | null
+  refNullEvent: object | null
 
   constructor(rootStore: RootStore) {
     makeAutoObservable(this)
@@ -29,5 +30,18 @@ export class HideLogsStore {
     } catch (e) {
       this.rootStore.toastStore.showToast(`Ошибка при доставке сообщения боту ${e?.message || e}`)
     }
+  }
+
+  handleHideNullRefEvent() {
+    SDK.hideRecievedData()
+  }
+
+  async handleGenerateNullRefEvent() {
+    await SDK.Bridge?.sendBotEvent({
+      method: 'send_notification',
+      params: {
+        "delay": 0,
+      },
+    })
   }
 }
