@@ -40,7 +40,7 @@ export class HideLogsStore {
     await SDK.Bridge?.sendBotEvent({
       method: 'send_notification',
       params: {
-        "delay": 0,
+        delay: 0,
       },
     })
   }

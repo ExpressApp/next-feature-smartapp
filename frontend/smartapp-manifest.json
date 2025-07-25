@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Скрытие данных в логах",
+  "changeLog": "Авторизация для Express Disk",
   "translations": {
     "changeLog": {
-      "ru": "Скрытие данных в логах",
-      "en": "Hide recv data in logs"
+      "ru": "Авторизация для Express Disk",
+      "en": "Express Disk auth"
     }
   }
 }

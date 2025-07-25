@@ -189,6 +189,11 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">nfc</span>
         NFC
       </StyledLink>
+      <Subtitle>Express Disk</Subtitle>
+      <StyledLink to="express-disk-get-auth">
+        <span className="material-icons">lock</span>
+        Получение кода авторизации
+      </StyledLink>
       <Subtitle>Прочее</Subtitle>
       <StyledLink to="connection-status">
         <span className="material-icons">wifi_off</span>

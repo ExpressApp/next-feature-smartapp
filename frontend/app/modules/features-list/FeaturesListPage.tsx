@@ -50,6 +50,7 @@ import { WebCommandsPipelineErrorPage } from '../web-commands-pipeline/WebComman
 import NfcPage from '../nfc/NfcPage'
 import BluetoothPage from '../bluetooth/BluetoothPage'
 import SetAllowedDomainsPage from '../set-allowed-domains/SetAllowedDomainsPage'
+import ExpressDiskGetAuthPage from '../express-disk-get-auth/ExpressDiskGetAuthPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -127,6 +128,7 @@ const FeaturesListPage = () => {
           <Route path="/bluetooth" element={<BluetoothPage />} />
           <Route path="/bluetooth" element={<BluetoothPage />} />
           <Route path="/set-domains" element={<SetAllowedDomainsPage />} />
+          <Route path="/express-disk-get-auth" element={<ExpressDiskGetAuthPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}
