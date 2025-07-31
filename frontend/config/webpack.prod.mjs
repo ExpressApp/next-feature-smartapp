@@ -5,6 +5,8 @@ import ZipPlugin from 'zip-webpack-plugin'
 import GenerateJsonPlugin from 'generate-json-webpack-plugin' 
 import smartappManifestJson from '../smartapp-manifest.json' assert { type: 'json' }
 import packageJson from '../package.json' assert { type: 'json' }
+import CopyPlugin from 'copy-webpack-plugin'
+
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -31,6 +33,11 @@ export default {
       filename: `bundle-${packageJson.version}.zip`,
       exclude: [/\.map$/]
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: "app/assets/icons", to: "icons" },
+      ],
+    })
   ],
   resolve: {
     extensions: ['.ts', '.js', '.tsx'],
