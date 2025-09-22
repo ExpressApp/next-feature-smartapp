@@ -7,6 +7,7 @@ import { runInAction } from 'mobx'
 export class AppStore {
   rootStore: RootStore
   isLoaded: boolean
+  isPinned: boolean | null
   platform: string
   iosSwipeCallback: () => void
 
@@ -14,6 +15,7 @@ export class AppStore {
     this.rootStore = rootStore
     this.platform = new URLSearchParams(window.location.search).get('platform') || 'unknown'
     this.iosSwipeCallback = this.iosSwipeCallbackFunc.bind(this)
+    this.isPinned = null
   }
 
   private iosSwipeCallbackFunc(event: IosSwipeSubscriptionEvent) {
@@ -25,6 +27,10 @@ export class AppStore {
 
     const meta = response?.payload?.openSmartAppMeta
     const initialData = response?.payload?.initialData
+
+    runInAction(() => {
+      this.isPinned = response?.payload?.isPinned || null;
+    })
 
     if (meta || initialData?.initiator) {
       runInAction(() => {

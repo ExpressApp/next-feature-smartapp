@@ -133,6 +133,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">language</span>
         Текущая локаль
       </StyledLink>
+      <StyledLink to="pinned">
+        <span className="material-icons">menu_open</span>
+        Закрепление в меню
+      </StyledLink>
       <Subtitle>Диплинки</Subtitle>
       <StyledLink to="create-deeplink">
         <span className="material-icons">link</span>
