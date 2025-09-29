@@ -29,7 +29,7 @@ export class AppStore {
     const initialData = response?.payload?.initialData
 
     runInAction(() => {
-      this.isPinned = response?.payload?.isPinned || null;
+      this.isPinned = response?.payload?.isPinned ?? null;
     })
 
     if (meta || initialData?.initiator) {
