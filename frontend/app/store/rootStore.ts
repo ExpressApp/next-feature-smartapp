@@ -42,6 +42,7 @@ import { NfcStore } from '../modules/nfc/nfc.store'
 import { BluetoothStore } from '../modules/bluetooth/bluetooth.store'
 import { SetAllowedDomainsStore } from '../modules/set-allowed-domains/set-allowed-domains.store'
 import { ExpressDiskGetAuthStore } from '../modules/express-disk-get-auth/express-disk-get-auth.store'
+import { BackgroundEventsStore } from '../modules/background-events/background-events.store'
 
 export class RootStore {
   appStore: AppStore
@@ -88,6 +89,7 @@ export class RootStore {
   bluetoothStore: BluetoothStore
   setAllowedDomainsStore: SetAllowedDomainsStore
   expressDiskGetAuthStore: ExpressDiskGetAuthStore
+  backgroundEventsStore: BackgroundEventsStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -134,5 +136,6 @@ export class RootStore {
     this.bluetoothStore = new BluetoothStore(this)
     this.setAllowedDomainsStore = new SetAllowedDomainsStore(this)
     this.expressDiskGetAuthStore = new ExpressDiskGetAuthStore(this)
+    this.backgroundEventsStore = new BackgroundEventsStore(this)
   }
 }

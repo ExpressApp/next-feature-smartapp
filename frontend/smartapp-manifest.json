@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Авторизация для Express Disk",
+  "changeLog": "Тестирование фоновых событий iOS",
   "translations": {
     "changeLog": {
-      "ru": "Авторизация для Express Disk",
-      "en": "Express Disk auth"
+      "ru": "Тестирование фоновых событий iOS",
+      "en": "iOS ploho rabotaet"
     }
   }
 }

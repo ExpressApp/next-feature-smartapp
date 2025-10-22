@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react'
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { useStore } from '../../hooks/useStore'
 import FeatureHeader from '../../components/FeatureHeader'
 import FeaturePage from '../../components/FeaturePage'

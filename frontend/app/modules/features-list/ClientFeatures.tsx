@@ -99,6 +99,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">timer</span>
         Синхронный запрос
       </StyledLink>
+      <StyledLink to="background-events">
+        <span className="material-icons">timer</span>
+        Доставка событий в фоне
+      </StyledLink>
       <Subtitle>Навигация</Subtitle>
       <StyledLink to="open-smartapp">
         <span className="material-icons">open_in_browser</span>

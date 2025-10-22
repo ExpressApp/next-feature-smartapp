@@ -1,6 +1,6 @@
 {
   "name": "next-feature-smartapp",
-  "version": "2.19.1",
+  "version": "2.20.0",
   "description": "SmartApp with all features",
   "main": "index.js",
   "scripts": {

@@ -52,6 +52,7 @@ import BluetoothPage from '../bluetooth/BluetoothPage'
 import SetAllowedDomainsPage from '../set-allowed-domains/SetAllowedDomainsPage'
 import ExpressDiskGetAuthPage from '../express-disk-get-auth/ExpressDiskGetAuthPage'
 import PinnedPage from '../pinned/PinnedPage'
+import BackgroundEventsPage from '../background-events/BackgroundEventsPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -131,6 +132,7 @@ const FeaturesListPage = () => {
           <Route path="/set-domains" element={<SetAllowedDomainsPage />} />
           <Route path="/express-disk-get-auth" element={<ExpressDiskGetAuthPage />} />
           <Route path="/pinned" element={<PinnedPage />} />
+          <Route path="/background-events" element={<BackgroundEventsPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}
