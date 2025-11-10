@@ -70,15 +70,19 @@ async def build_static_image_url(image_file: Image, smartapp: SmartApp) -> str:
     return link
 
 
-async def build_example_file_meta(file_type: str, smartapp: SmartApp) -> str:
-    filename = "./app/resources/example_files/eicar.com" if file_type == "infected" else "./app/resources/example_files/logo.png"
+async def build_example_file_meta(file_type: str, smartapp: SmartApp) -> Any:
+    filemeta = None
+    filename = (
+        "./app/resources/example_files/eicar.com" if file_type == "infected"
+        else "./app/resources/example_files/logo.png"
+    )
 
-    async with aioopen(filename, mode="rb") as file:
-        file = await smartapp.bot.upload_file(
+    async with aioopen(filename, mode="rb") as async_buffer:
+        filemeta = await smartapp.bot.upload_file(
             bot_id=smartapp.bot_id,
             chat_id=smartapp.chat_id,
-            async_buffer=file,
+            async_buffer=async_buffer,
             filename=filename,
         )
 
-    return file
+    return filemeta

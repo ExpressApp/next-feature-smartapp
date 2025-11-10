@@ -18,6 +18,7 @@ from pybotx import (
 from app.api.dependencies.bot import bot_dependency
 from app.api.exceptions.botx import handle_exceptions
 from app.logger import logger
+from app.schemas.auth import open_id_token
 
 router = APIRouter()
 
@@ -26,6 +27,8 @@ router = APIRouter()
 @handle_exceptions
 async def command_handler(request: Request, bot: Bot = bot_dependency) -> JSONResponse:
     """Receive commands from users. Max timeout - 5 seconds."""
+    open_id_token.set(request.headers.get("OPEN_ID_ACCESS_TOKEN"))
+
     bot.async_execute_raw_bot_command(
         await request.json(),
         request_headers=request.headers,
@@ -111,15 +114,19 @@ async def callback_handler(request: Request, bot: Bot = bot_dependency) -> JSONR
 
 
 @router.options("/smartapp_files/static/api/cookies")
-async def cookies_opts(response: Response, request: Request):
-    response.headers["access-control-request-method"] = "GET, POST, DELETE, PUT, OPTIONS"
+async def cookies_opts(response: Response, request: Request) -> None:
+    response.headers["access-control-request-method"] = (
+        "GET, POST, DELETE, PUT, OPTIONS"
+    )
     response.headers["access-control-allow-origin"] = request.headers.get("origin")
-    response.headers["access-control-allow-credentials"] = 'true'
+    response.headers["access-control-allow-credentials"] = "true"
 
 
 @router.get("/smartapp_files/static/api/cookies")
-async def cookies_get(request: Request, response: Response):
+async def cookies_get(request: Request, response: Response) -> object:
     headers = {key: value for key, value in request.headers.items()}
-    response.headers["access-control-allow-origin"] = request.headers.get("origin") or 'null'
-    response.headers["access-control-allow-credentials"] = 'true'
+    response.headers["access-control-allow-origin"] = (
+        request.headers.get("origin") or "null"
+    )
+    response.headers["access-control-allow-credentials"] = "true"
     return {"headers": headers}

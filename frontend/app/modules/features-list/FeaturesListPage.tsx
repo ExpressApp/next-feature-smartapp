@@ -53,6 +53,7 @@ import SetAllowedDomainsPage from '../set-allowed-domains/SetAllowedDomainsPage'
 import ExpressDiskGetAuthPage from '../express-disk-get-auth/ExpressDiskGetAuthPage'
 import PinnedPage from '../pinned/PinnedPage'
 import BackgroundEventsPage from '../background-events/BackgroundEventsPage'
+import KcAccessTokenPage from '../kc-access-token/KcAccessTokenPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -133,6 +134,7 @@ const FeaturesListPage = () => {
           <Route path="/express-disk-get-auth" element={<ExpressDiskGetAuthPage />} />
           <Route path="/pinned" element={<PinnedPage />} />
           <Route path="/background-events" element={<BackgroundEventsPage />} />
+          <Route path="/keycloak-token" element={<KcAccessTokenPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}

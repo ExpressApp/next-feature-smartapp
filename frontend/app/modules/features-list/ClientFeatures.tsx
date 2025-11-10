@@ -227,6 +227,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">list</span>
         Список SmartApp
       </StyledLink>
+      <StyledLink to="keycloak-token">
+        <span className="material-icons">password</span>
+        Токен Keycloak
+      </StyledLink>
     </>
   )
 }

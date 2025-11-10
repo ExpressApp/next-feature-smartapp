@@ -43,6 +43,7 @@ import { BluetoothStore } from '../modules/bluetooth/bluetooth.store'
 import { SetAllowedDomainsStore } from '../modules/set-allowed-domains/set-allowed-domains.store'
 import { ExpressDiskGetAuthStore } from '../modules/express-disk-get-auth/express-disk-get-auth.store'
 import { BackgroundEventsStore } from '../modules/background-events/background-events.store'
+import { KcAccessTokenStore } from '../modules/kc-access-token/kc-access-token.store'
 
 export class RootStore {
   appStore: AppStore
@@ -90,6 +91,7 @@ export class RootStore {
   setAllowedDomainsStore: SetAllowedDomainsStore
   expressDiskGetAuthStore: ExpressDiskGetAuthStore
   backgroundEventsStore: BackgroundEventsStore
+  kcAccessTokenStore: KcAccessTokenStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -137,5 +139,6 @@ export class RootStore {
     this.setAllowedDomainsStore = new SetAllowedDomainsStore(this)
     this.expressDiskGetAuthStore = new ExpressDiskGetAuthStore(this)
     this.backgroundEventsStore = new BackgroundEventsStore(this)
+    this.kcAccessTokenStore = new KcAccessTokenStore(this)
   }
 }

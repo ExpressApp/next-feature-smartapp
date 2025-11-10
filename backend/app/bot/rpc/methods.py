@@ -14,13 +14,14 @@ from pybotx_smartapp_rpc import (
 from pydantic import Field, validator
 
 from app.bot.feature_router import FeatureRouter
+from app.schemas.auth import open_id_token
 from app.schemas.menu import FeatureMenu
 from app.services import ui_elements
 from app.services.answers import (
+    build_example_file_meta,
     build_file_meta_text,
     build_static_image_url,
     build_user_from_search_text,
-    build_example_file_meta,
 )
 from app.services.botx_user_search import (
     UserIsBotError,
@@ -244,3 +245,8 @@ async def get_example_file(
         )
 
     return RPCResultResponse("ok", files=[async_file])
+
+
+@rpc.method("keycloak-token")
+async def token(smartapp: SmartApp) -> RPCResultResponse[str]:
+    return RPCResultResponse(open_id_token.get())

@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Тестирование фоновых событий iOS",
+  "changeLog": "Токен Keycloak",
   "translations": {
     "changeLog": {
-      "ru": "Тестирование фоновых событий iOS",
-      "en": "iOS ploho rabotaet"
+      "ru": "Токен Keycloak",
+      "en": "Keycloak access token"
     }
   }
 }
