@@ -40,6 +40,7 @@ import { CredentialsStore } from '../modules/credentials/credentials.store'
 import { WebCommandsPipelineStore } from '../modules/web-commands-pipeline/web-commands-pipeline.store'
 import { NfcStore } from '../modules/nfc/nfc.store'
 import { BluetoothStore } from '../modules/bluetooth/bluetooth.store'
+import { MediaQualityStore } from '../modules/media-quality/media-quality-store'
 
 export class RootStore {
   appStore: AppStore
@@ -84,6 +85,7 @@ export class RootStore {
   webCommandsPipelineStore: WebCommandsPipelineStore
   nfcStore: NfcStore
   bluetoothStore: BluetoothStore
+  mediaQualityStore: MediaQualityStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -128,5 +130,6 @@ export class RootStore {
     this.webCommandsPipelineStore = new WebCommandsPipelineStore(this)
     this.nfcStore = new NfcStore(this)
     this.bluetoothStore = new BluetoothStore(this)
+    this.mediaQualityStore = new MediaQualityStore(this)
   }
 }

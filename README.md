@@ -21,6 +21,16 @@ cd frontend
 npm i
 ```
 
+#### Локальное тестирование npm зависимостей
+```
+cd frontend
+npm link
+
+Register one or more workspaces for use in the current project.
+Use `npm link` in package you want to link, and npm link [package name] to link another package that you’d like to test into your current project.
+Read more [npm documentation](https://docs.npmjs.com/cli/v9/commands/npm-link)
+```
+
 #### Запуск в режиме отладки
 ```
 ./scripts/run-front
