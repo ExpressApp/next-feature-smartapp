@@ -159,6 +159,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">bug_report</span>
         Антивирусная проверка файлов
       </StyledLink>
+      <StyledLink to="media-quality">
+        <span className="material-icons">close_fullscreen</span>
+        Выбор качества сжатия
+      </StyledLink>
       <Subtitle>Прокси</Subtitle>
       <StyledLink to="file-proxy">
         <span className="material-icons">drive_file_move</span>

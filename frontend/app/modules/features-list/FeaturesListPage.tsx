@@ -54,6 +54,7 @@ import ExpressDiskGetAuthPage from '../express-disk-get-auth/ExpressDiskGetAuthP
 import PinnedPage from '../pinned/PinnedPage'
 import BackgroundEventsPage from '../background-events/BackgroundEventsPage'
 import KcAccessTokenPage from '../kc-access-token/KcAccessTokenPage'
+import MediaQualityPage from '../media-quality/MediaQualityPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -135,6 +136,7 @@ const FeaturesListPage = () => {
           <Route path="/pinned" element={<PinnedPage />} />
           <Route path="/background-events" element={<BackgroundEventsPage />} />
           <Route path="/keycloak-token" element={<KcAccessTokenPage />} />
+          <Route path="/media-quality" element={<MediaQualityPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}

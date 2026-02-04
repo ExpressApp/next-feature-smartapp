@@ -44,6 +44,7 @@ import { SetAllowedDomainsStore } from '../modules/set-allowed-domains/set-allow
 import { ExpressDiskGetAuthStore } from '../modules/express-disk-get-auth/express-disk-get-auth.store'
 import { BackgroundEventsStore } from '../modules/background-events/background-events.store'
 import { KcAccessTokenStore } from '../modules/kc-access-token/kc-access-token.store'
+import { MediaQualityStore } from '../modules/media-quality/media-quality-store'
 
 export class RootStore {
   appStore: AppStore
@@ -92,6 +93,7 @@ export class RootStore {
   expressDiskGetAuthStore: ExpressDiskGetAuthStore
   backgroundEventsStore: BackgroundEventsStore
   kcAccessTokenStore: KcAccessTokenStore
+  mediaQualityStore: MediaQualityStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -140,5 +142,6 @@ export class RootStore {
     this.expressDiskGetAuthStore = new ExpressDiskGetAuthStore(this)
     this.backgroundEventsStore = new BackgroundEventsStore(this)
     this.kcAccessTokenStore = new KcAccessTokenStore(this)
+    this.mediaQualityStore = new MediaQualityStore(this)
   }
 }
