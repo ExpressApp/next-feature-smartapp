@@ -6,7 +6,7 @@ import Button from '../../components/Button'
 
 const FileProxyPage: FC = () => {
   const [url, setUrl] = useState(
-    'https://cts1dev.ccsteam.ru/api/v1/smartapp_proxy/zgubb4kz4xvqgcwi/upload/iblock/523/cf32v2zoh1rxzriy9xt3iqqtbg4dl254.mp4'
+    `https://${location.hostname}/api/v1/smartapp_proxy/zgubb4kz4xvqgcwi/upload/iblock/1e7/nsj2kkhq2ibun8s2l3jl4gbocasbybzd/eXpress_video.mp4`
   )
   const [videoUrl, setVideoUrl] = useState(url)
 
