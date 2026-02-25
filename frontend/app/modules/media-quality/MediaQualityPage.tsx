@@ -58,6 +58,7 @@ const MediaQualityPage: FC = () => {
         <option value={FILE_MEDIA_QUALITY.LOW}>{FILE_MEDIA_QUALITY.LOW}</option>
         <option value={FILE_MEDIA_QUALITY.MEDIUM}>{FILE_MEDIA_QUALITY.MEDIUM}</option>
         <option value={FILE_MEDIA_QUALITY.HIGH}>{FILE_MEDIA_QUALITY.HIGH}</option>
+        <option value={FILE_MEDIA_QUALITY.ORIGINAL}>{FILE_MEDIA_QUALITY.ORIGINAL}</option>
       </Select>
       <br />
       <br />
