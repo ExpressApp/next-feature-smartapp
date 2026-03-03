@@ -12,6 +12,9 @@ const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
 `
+const StatusDiv = styled.div<{ value: boolean | null }>`
+  color: ${props => props.value ? 'green' : '#d44'};
+`
 
 const DEFAULT_MSG = {
   mimeType: 'text/plain',
@@ -42,10 +45,23 @@ const NfcPage: FC = () => {
         bytes: JSON.parse(message.bytes),
       }))
     )
+  const handleGetStatusClick = () => {}
 
   return (
     <FeaturePage>
       <FeatureHeader name="NFC" />
+      <b>Статус считывателя</b>
+      <br />
+      <br />
+      {store.nfcAvailable !== null && store.nfcEnabled !== null && (
+        <>
+          <StatusDiv value={store.nfcAvailable}>◉ {!store.nfcAvailable && 'не '} найден</StatusDiv>
+          <StatusDiv value={store.nfcEnabled}>◉ {!store.nfcEnabled && 'не '} включен</StatusDiv>
+        </>
+      )}
+      <Button onClick={handleGetStatusClick} id="status-btn" title="Получить статус" />
+      <br />
+      <br />
       <b>Запись</b>
       <br />
       <br />

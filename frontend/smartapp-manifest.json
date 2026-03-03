@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Токен Keycloak",
+  "changeLog": "Статус NFC",
   "translations": {
     "changeLog": {
-      "ru": "Токен Keycloak",
-      "en": "Keycloak access token"
+      "ru": "Статус NFC",
+      "en": "NFC status"
     }
   }
 }

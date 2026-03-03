@@ -36,8 +36,8 @@ export class BluetoothStore {
   }
 
   async enableBluetooth(): Promise<void> {
-    if (this.rootStore.appStore.platform !== 'android') {
-      this.rootStore.toastStore.showToast('Тестирование возможно только на платформе Android')
+    if (this.rootStore.appStore.platform === 'web') {
+      this.rootStore.toastStore.showToast('Тестирование возможно только на мобильных платформах')
       return
     }
 
