@@ -45,7 +45,7 @@ const NfcPage: FC = () => {
         bytes: JSON.parse(message.bytes),
       }))
     )
-  const handleGetStatusClick = () => {}
+  const handleGetStatusClick = () => store.getStatus()
 
   return (
     <FeaturePage>
