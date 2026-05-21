@@ -16,7 +16,7 @@ const KcAccessTokenPage: FC = () => {
       <FeatureHeader name="Токен Keycloak" />
       <span>Токен</span>
       <Input value={`${store.token}`} id="token" disabled />
-      <br/>
+      <br />
       <Button onClick={handleSubmit} id="submit" title="Получить" />
     </FeaturePage>
   )

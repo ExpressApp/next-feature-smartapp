@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Статус NFC",
+  "changeLog": "Открытие экрана контактов",
   "translations": {
     "changeLog": {
-      "ru": "Статус NFC",
-      "en": "NFC status"
+      "ru": "Открытие экрана контактов",
+      "en": "Open contacts page on client"
     }
   }
 }

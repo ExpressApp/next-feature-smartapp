@@ -55,6 +55,7 @@ import PinnedPage from '../pinned/PinnedPage'
 import BackgroundEventsPage from '../background-events/BackgroundEventsPage'
 import KcAccessTokenPage from '../kc-access-token/KcAccessTokenPage'
 import MediaQualityPage from '../media-quality/MediaQualityPage'
+import OpenContactsPage from '../open-contacts/OpenSmartAppPage'
 
 const Wrapper = styled.div`
   margin-bottom: 30px;
@@ -137,6 +138,7 @@ const FeaturesListPage = () => {
           <Route path="/background-events" element={<BackgroundEventsPage />} />
           <Route path="/keycloak-token" element={<KcAccessTokenPage />} />
           <Route path="/media-quality" element={<MediaQualityPage />} />
+          <Route path="/open-contacts" element={<OpenContactsPage />} />
         </Routes>
       </Wrapper>
       {store.showMainLoader && <MainLoader />}

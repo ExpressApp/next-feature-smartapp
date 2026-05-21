@@ -124,6 +124,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">swipe</span>
         Свайп на iOS
       </StyledLink>
+      <StyledLink to="open-contacts">
+        <span className="material-icons">contacts</span>
+        Открытие экрана контактов
+      </StyledLink>
       <Subtitle>Внешний вид</Subtitle>
       <StyledLink to="layout-type">
         <span className="material-icons">settings_overscan</span>

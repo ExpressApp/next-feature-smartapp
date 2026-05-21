@@ -13,7 +13,7 @@ const Buttons = styled.div`
   justify-content: space-between;
 `
 const StatusDiv = styled.div<{ value: boolean | null }>`
-  color: ${props => props.value ? 'green' : '#d44'};
+  color: ${props => (props.value ? 'green' : '#d44')};
 `
 
 const DEFAULT_MSG = {

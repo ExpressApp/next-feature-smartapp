@@ -1,6 +1,6 @@
 import * as SDK from '@expressms/smartapp-sdk'
 import { RootStore } from '../../store/rootStore'
-import { STATUS, StatusResponse } from '@expressms/smartapp-sdk/build/main/types'
+import { STATUS } from '@expressms/smartapp-sdk/build/main/types'
 import { makeAutoObservable, runInAction } from 'mobx'
 import type { KeycloakTokenResponse } from './kc-access-token.types'
 

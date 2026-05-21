@@ -45,6 +45,7 @@ import { ExpressDiskGetAuthStore } from '../modules/express-disk-get-auth/expres
 import { BackgroundEventsStore } from '../modules/background-events/background-events.store'
 import { KcAccessTokenStore } from '../modules/kc-access-token/kc-access-token.store'
 import { MediaQualityStore } from '../modules/media-quality/media-quality-store'
+import { OpenContactsStore } from '../modules/open-contacts/open-contacts.store'
 
 export class RootStore {
   appStore: AppStore
@@ -94,6 +95,7 @@ export class RootStore {
   backgroundEventsStore: BackgroundEventsStore
   kcAccessTokenStore: KcAccessTokenStore
   mediaQualityStore: MediaQualityStore
+  openContactsStore: OpenContactsStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -143,5 +145,6 @@ export class RootStore {
     this.backgroundEventsStore = new BackgroundEventsStore(this)
     this.kcAccessTokenStore = new KcAccessTokenStore(this)
     this.mediaQualityStore = new MediaQualityStore(this)
+    this.openContactsStore = new OpenContactsStore(this)
   }
 }

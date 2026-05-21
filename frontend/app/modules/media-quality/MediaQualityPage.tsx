@@ -13,7 +13,7 @@ const Buttons = styled.div`
   display: flex;
   flex-direction: column;
   gap: 6px;
-  
+
   button {
     font-size: 12px;
   }
