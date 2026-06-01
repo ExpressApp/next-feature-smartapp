@@ -11,11 +11,6 @@ export class OpenSettingsStore {
 
   async openSettings(): Promise<void> {
     try {
-      if (this.rootStore.appStore.platform === 'web') {
-        this.rootStore.toastStore.showToast(`Открытие настроек не поддерживается на платформе Web`)
-        return
-      }
-
       const response = (await SDK.openClientSettings()) as StatusResponse
 
       if (response.payload.status === STATUS.ERROR) {
