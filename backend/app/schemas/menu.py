@@ -1,7 +1,7 @@
 """UI menu schemas."""
 from enum import auto
 
-from pydantic import BaseModel
+from pydantic import BaseModel, RootModel
 
 from app.schemas.enums import AutoStrEnum
 
@@ -34,5 +34,5 @@ class Feature(BaseModel):
     ui_elements: list[UIElement]
 
 
-class FeatureMenu(BaseModel):
-    __root__: list[Feature]
+class FeatureMenu(RootModel[list[Feature]]):
+    pass

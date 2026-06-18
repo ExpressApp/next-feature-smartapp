@@ -4,21 +4,19 @@ from typing import Any
 from uuid import UUID
 
 from pybotx import BotAccountWithSecret
-from pydantic import BaseSettings, validator
+from pydantic import field_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class AppSettings(BaseSettings):
-    class Config:  # noqa: WPS431
-        env_file = ".env"
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    # TODO: Change type to `list[BotAccountWithSecret]` after closing:
-    # https://github.com/samuelcolvin/pydantic/issues/1458
     BOT_CREDENTIALS: Any
 
     # base kwargs
     DEBUG: bool = False
 
-    @validator("BOT_CREDENTIALS", pre=True)
+    @field_validator("BOT_CREDENTIALS", mode="before")
     @classmethod
     def parse_bot_credentials(cls, raw_credentials: str) -> list[BotAccountWithSecret]:
         """Parse bot credentials separated by comma.

@@ -8,28 +8,29 @@ authors = []
 
 
 [tool.poetry.dependencies]
-python = ">=3.9, <3.11"
+python = ">=3.10, <3.15"
 
-pybotx = { git = "https://github.com/ExpressApp/pybotx.git", branch = "test/am/disable-direct-notification-body-length-limit" }
-pybotx-smartapp-rpc = "0.11.0"
+pybotx = "^0.76.5"
+pybotx-smartapp-rpc = "^0.13.1"
 
-fastapi = "~0.70.0"
-uvicorn = "~0.13.4"
+fastapi = "^0.115.0"
+uvicorn = "^0.34.0"
 
-loguru = "~0.6.0"
+loguru = "^0.7.3"
 mako = "~1.1.4"
-python-dotenv = "^0.19.1"
+python-dotenv = "^1.0.0"
+pydantic-settings = "^2.0.0"
 
-aiofiles = "^0.8.0"
-types-aiofiles = "^23.1.0.0"
+aiofiles = "^25.1.0"
+types-aiofiles = "^25.1.0"
 
-[tool.poetry.dev-dependencies]
-black = "~21.6b0"
-isort = "5.9.2"
-autoflake = "~1.4"
-mypy = "~0.910"
-wemake-python-styleguide = "~0.15.3"
-bandit = "1.7.2"  # https://github.com/PyCQA/bandit/issues/837
+[tool.poetry.group.dev.dependencies]
+black = "^25.0.0"
+isort = "^5.13.0"
+autoflake = "^2.0.0"
+mypy = "^1.10.0"
+wemake-python-styleguide = "^1.6.0"
+bandit = "^1.7.2"
 
 [build-system]
 requires = ["poetry>=1.0"]

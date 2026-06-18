@@ -11,7 +11,7 @@ from pybotx_smartapp_rpc import (
     RPCResultResponse,
     SmartApp,
 )
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 
 from app.bot.feature_router import FeatureRouter
 from app.schemas.auth import open_id_token
@@ -100,7 +100,7 @@ class SendPushArgs(RPCArgsBaseModel):
     meta: Dict[str, Any] = Field(default_factory=dict)
     delay: float
 
-    @validator("meta", pre=True)
+    @field_validator("meta", mode="before")
     @classmethod
     def parse_configuration(cls, value: Any) -> Dict[str, Any]:  # noqa: WPS110
         if isinstance(value, str):

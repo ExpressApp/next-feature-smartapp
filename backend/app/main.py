@@ -1,5 +1,8 @@
 """Application with configuration for events, routers and middleware."""
 
+from contextlib import asynccontextmanager
+from typing import AsyncGenerator
+
 from fastapi import FastAPI
 
 from app.api.routers import router
@@ -9,25 +12,18 @@ from app.resources import strings
 from app.services.static_files import StaticFilesCustomHeaders
 
 
-async def startup() -> None:
-    # -- Bot --
+@asynccontextmanager
+async def lifespan(application: FastAPI) -> AsyncGenerator[None, None]:
     await bot.startup()
-
     bot.state.smartapp_rpc = smartapp
-
-
-async def shutdown() -> None:
-    # -- Bot --
+    yield
     await bot.shutdown()
 
 
 def get_application() -> FastAPI:
     """Create configured server application instance."""
-    application = FastAPI(title=strings.BOT_PROJECT_NAME)
+    application = FastAPI(title=strings.BOT_PROJECT_NAME, lifespan=lifespan)
     application.state.bot = bot
-
-    application.add_event_handler("startup", startup)
-    application.add_event_handler("shutdown", shutdown)
 
     application.include_router(router)
 
