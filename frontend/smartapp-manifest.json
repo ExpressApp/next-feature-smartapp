@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Открытие экрана контактов",
+  "changeLog": "Search corp phonebook fields",
   "translations": {
     "changeLog": {
-      "ru": "Открытие экрана контактов",
-      "en": "Open contacts page on client"
+      "ru": "Search corp phonebook fields",
+      "en": "Search corp phonebook fields"
     }
   }
 }

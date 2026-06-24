@@ -28,8 +28,12 @@ export class SearchPhonebookStore {
     })
   }
 
-  async searchCorpPhonebook(filter: string, exactMatch?: boolean) {
-    const response = (await SDK.searchCorporatePhonebook({ filter, exactMatch })) as SearchCorpPhonebookResponse
+  async searchCorpPhonebook(filter: string, exactMatch?: boolean, searchFields?: string[]) {
+    const response = (await SDK.searchCorporatePhonebook({
+      filter,
+      exactMatch,
+      searchFields,
+    })) as SearchCorpPhonebookResponse
 
     if (response.payload.status === STATUS.ERROR) {
       this.rootStore.toastStore.showToast(`Ошибка поиска корпоративных контактов ${response.payload.errorCode}`)
