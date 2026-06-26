@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Search corp phonebook fields",
+  "changeLog": "iOS pinch-to-zoom",
   "translations": {
     "changeLog": {
-      "ru": "Search corp phonebook fields",
-      "en": "Search corp phonebook fields"
+      "ru": "iOS pinch-to-zoom",
+      "en": "iOS pinch-to-zoom"
     }
   }
 }
