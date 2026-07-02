@@ -1,5 +1,5 @@
-import React, { FC, useLayoutEffect } from 'react'
-import { createGlobalStyle } from 'styled-components'
+import React, { FC, ReactNode, useLayoutEffect } from 'react'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { useStore } from '../../hooks/useStore'
 
 const GlobalStyle = createGlobalStyle`
@@ -37,14 +37,25 @@ body {
 }
 `
 
-const Theme: FC = () => {
+type Props = {
+  children: ReactNode
+}
+
+const Theme: FC<Props> = ({ children }) => {
   const { themeStore: store } = useStore()
 
   useLayoutEffect(() => {
     store.setupTheme()
   }, [])
 
-  return <GlobalStyle />
+  return (
+    <ThemeProvider theme={{
+      fontScale: store.fontScale
+    }}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  )
 }
 
 export default Theme

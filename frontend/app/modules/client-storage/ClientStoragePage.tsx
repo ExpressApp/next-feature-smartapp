@@ -12,7 +12,7 @@ const Textarea = styled.textarea`
   width: calc(100% - 40px);
   border: 1px solid #e2e2e2;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: ${props => Math.round(props.theme.fontScale * 14)}px;
   background-color: var(--input-bg);
   color: var(--font-color);
 `

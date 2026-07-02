@@ -10,7 +10,7 @@ const VerDiv = styled.div.attrs({ className: 'version' })`
   border-radius: 3px;
   border: 1px solid var(--light-grey);
   line-height: 20px;
-  font-size: 12px;
+  font-size: ${props => Math.round(props.theme.fontScale * 12)}px;
   align-self: center;
   color: white;
   padding: 2px 5px;

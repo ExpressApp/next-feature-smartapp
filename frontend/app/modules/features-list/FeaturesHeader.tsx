@@ -18,7 +18,7 @@ const Content = styled.span`
 
 const Text = styled.span`
   padding-left: 16px;
-  font-size: 24px;
+  font-size: ${props => Math.round(props.theme.fontScale * 24)}px;
   color: var(--font-color);
 `
 

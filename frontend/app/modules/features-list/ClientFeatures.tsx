@@ -5,7 +5,7 @@ import 'material-icons/iconfont/material-icons.css'
 
 const StyledLink = styled(Link).attrs({ className: 'feature-smartapp__menu-item' })`
   padding-left: 20px;
-  font-size: 16px;
+  font-size: ${props => Math.round(props.theme.fontScale * 16)}px;
   line-height: 36px;
   text-decoration: none;
   color: var(--font-color);
@@ -14,7 +14,7 @@ const StyledLink = styled(Link).attrs({ className: 'feature-smartapp__menu-item'
   & .material-icons {
     position: relative;
     bottom: -3px;
-    font-size: 18px;
+    font-size: ${props => Math.round(props.theme.fontScale * 18)}px;
     padding-right: 8px;
   }
 
@@ -33,7 +33,7 @@ const StyledLink = styled(Link).attrs({ className: 'feature-smartapp__menu-item'
 
 const Title = styled.div`
   padding: 20px 0 10px 20px;
-  font-size: 16px;
+  font-size: ${props => Math.round(props.theme.fontScale * 16)}px;
   font-weight: 700;
   text-transform: uppercase;
   opacity: 0.8;
@@ -41,7 +41,7 @@ const Title = styled.div`
 
 const Subtitle = styled.div`
   padding: 20px 0 10px 20px;
-  font-size: 16px;
+  font-size: ${props => Math.round(props.theme.fontScale * 16)}px;
   font-weight: 700;
 `
 

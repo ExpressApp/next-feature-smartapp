@@ -22,12 +22,13 @@ const App = () => {
   }, [location])
 
   return (
-    <div className="feature-smartapp">
-      <Theme />
-      <Toast />
-      <FeaturesListPage />
-      <Version />
-    </div>
+    <Theme>
+      <div className="feature-smartapp">
+        <Toast />
+        <FeaturesListPage />
+        <Version />
+      </div>
+    </Theme>
   )
 }
 

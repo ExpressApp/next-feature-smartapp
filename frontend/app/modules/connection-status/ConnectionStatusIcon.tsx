@@ -7,7 +7,7 @@ const Unknown = styled.div`
   margin-top: 20px;
   & > span {
     position: relative;
-    font-size: 16px;
+    font-size: ${props => Math.round(props.theme.fontScale * 16)}px;
     margin-right: 5px;
     bottom: -2px;
   }

@@ -9,13 +9,14 @@ export class AppStore {
   isLoaded: boolean
   isPinned: boolean | null
   platform: string
-  iosSwipeCallback: () => void
+  iosSwipeCallback: (e: IosSwipeSubscriptionEvent) => void
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore
     this.platform = new URLSearchParams(window.location.search).get('platform') || 'unknown'
-    this.iosSwipeCallback = this.iosSwipeCallbackFunc.bind(this)
+    this.isLoaded = false
     this.isPinned = null
+    this.iosSwipeCallback = this.iosSwipeCallbackFunc.bind(this)
   }
 
   private iosSwipeCallbackFunc(event: IosSwipeSubscriptionEvent) {

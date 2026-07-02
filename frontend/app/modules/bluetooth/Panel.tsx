@@ -32,14 +32,14 @@ const Item = styled.button`
   background-color: ${props => (props.disabled ? 'var(--grey)' : 'var(--blue)')};
   margin-top: 10px;
   color: #fff;
-  font-size: 14px;
+  font-size: ${props => Math.round(props.theme.fontScale * 14)}px;
   display: flex;
   align-items: center;
   border: 0;
 `
 
 const Icon = styled.div.attrs({ className: 'material-icons' })`
-  font-size: 20px;
+  font-size: ${props => Math.round(props.theme.fontScale * 20)}px;
   display: block;
   width: 35px;
   min-width: 35px;
@@ -53,7 +53,7 @@ const SubItem = styled.button`
   text-align: left;
   color: #fff;
   margin: 10px 0 10px 60px;
-  font-size: 14px;
+  font-size: ${props => Math.round(props.theme.fontScale * 14)}px;
   border: 0;
 `
 

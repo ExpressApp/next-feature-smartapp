@@ -5,7 +5,7 @@ const ButtonStyled = styled.button`
   margin-top: 10px;
   padding: 5px 20px;
   height: 40px;
-  font-size: 14px;
+  font-size: ${props => Math.round(props.theme.fontScale * 14)}px;
   font-weight: 700;
   text-align: center;
   color: #fff;
@@ -31,7 +31,7 @@ const ButtonStyled = styled.button`
 const Icon = styled.span.attrs({ className: 'material-icons' })`
   position: relative;
   bottom: -3px;
-  font-size: 18px;
+  font-size: ${props => Math.round(props.theme.fontScale * 18)}px;
   padding-right: 8px;
   margin-left: -10px;
 `

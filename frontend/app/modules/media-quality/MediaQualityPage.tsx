@@ -15,7 +15,7 @@ const Buttons = styled.div`
   gap: 6px;
 
   button {
-    font-size: 12px;
+    font-size: ${props => Math.round(props.theme.fontScale * 12)}px;
   }
 `
 
@@ -25,7 +25,7 @@ const Select = styled.select`
   width: 100%;
   border: 1px solid var(--light-grey);
   border-radius: 3px;
-  font-size: 14px;
+  font-size: ${props => Math.round(props.theme.fontScale * 14)}px;
   color: var(--font-color);
   box-sizing: border-box;
   background-color: var(--input-bg);

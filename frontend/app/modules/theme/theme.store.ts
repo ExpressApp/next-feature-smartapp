@@ -3,10 +3,12 @@ import { RootStore } from '../../store/rootStore'
 export class ThemeStore {
   rootStore: RootStore
   isDarkTheme: boolean
+  fontScale: number
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore
     this.isDarkTheme = false
+    this.fontScale = parseFloat(new URLSearchParams(location.search).get('fontScale') || '1.0')
   }
 
   setupTheme(): void {
