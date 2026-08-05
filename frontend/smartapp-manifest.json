@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "iOS pinch-to-zoom",
+  "changeLog": "New Bridge for Aurora",
   "translations": {
     "changeLog": {
-      "ru": "iOS pinch-to-zoom",
-      "en": "iOS pinch-to-zoom"
+      "ru": "New Bridge for Aurora",
+      "en": "New Bridge for Aurora"
     }
   }
 }
