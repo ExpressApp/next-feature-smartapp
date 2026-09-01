@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "New Bridge for Aurora",
+  "changeLog": "Запрет копирования",
   "translations": {
     "changeLog": {
-      "ru": "New Bridge for Aurora",
-      "en": "New Bridge for Aurora"
+      "ru": "Запрет копирования",
+      "en": "Copy restrictions"
     }
   }
 }

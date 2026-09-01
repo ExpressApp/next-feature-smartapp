@@ -3,6 +3,7 @@ FROM python:3.10-slim
 ENV PYTHONUNBUFFERED 1
 ENV UVICORN_CMD_ARGS ""
 
+ARG DEBIAN_MIRROR="http://deb.debian.org"
 ARG NON_ROOT_USER=express_bot
 RUN useradd --create-home ${NON_ROOT_USER}
 
@@ -11,8 +12,10 @@ WORKDIR /app
 
 COPY poetry.lock pyproject.toml ./
 
-RUN apt-get update && \
-    apt-get install -y sudo && \
+RUN find /etc/apt -type f \( -name "*.list" -o -name "*.sources" \) \
+    -exec sed -Ei "s|https?://deb\.debian\.org|${DEBIAN_MIRROR}|g" {} + && \
+    apt-get update && \
+    apt-get install -y sudo git build-essential && \
     echo "${NON_ROOT_USER} ALL = NOPASSWD: /usr/sbin/update-ca-certificates" > /etc/sudoers.d/express_bot && \
     apt-get clean autoclean && \
     apt-get autoremove --yes && \
