@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Запрет копирования",
+  "changeLog": "Логи поддержки",
   "translations": {
     "changeLog": {
-      "ru": "Запрет копирования",
-      "en": "Copy restrictions"
+      "ru": "Логи поддержки",
+      "en": "Support logs"
     }
   }
 }

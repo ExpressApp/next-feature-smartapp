@@ -92,6 +92,7 @@ const SearchPhonebookPage: FC = () => {
       <br />
       {SEARCH_FIELDS.map(field => (
         <Checkbox
+          key={field}
           checked={searchFields.includes(field)}
           id={field}
           name={field}

@@ -33,6 +33,14 @@ export class AppStore {
       this.isPinned = response?.payload?.isPinned ?? null
     })
 
+    if (initialData?.initiator === 'support_request') {
+      runInAction(() => {
+        this.rootStore.supportRequestStore.setInitialData(response)
+        window.location.hash = '/support-request'
+      })
+      return
+    }
+
     if (meta || initialData?.initiator) {
       runInAction(() => {
         this.rootStore.initialDataStore.setInitialData(response)

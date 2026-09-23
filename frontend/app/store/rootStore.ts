@@ -47,6 +47,7 @@ import { KcAccessTokenStore } from '../modules/kc-access-token/kc-access-token.s
 import { MediaQualityStore } from '../modules/media-quality/media-quality-store'
 import { OpenContactsStore } from '../modules/open-contacts/open-contacts.store'
 import { IosPinchToZoomStore } from '../modules/ios-pinch-to-zoom/ios-pinch-to-zoom.store'
+import { SupportRequestStore } from '../modules/support-request/support-request.store'
 
 export class RootStore {
   appStore: AppStore
@@ -98,6 +99,7 @@ export class RootStore {
   mediaQualityStore: MediaQualityStore
   openContactsStore: OpenContactsStore
   iosPinchToZoomStore: IosPinchToZoomStore
+  supportRequestStore: SupportRequestStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -149,5 +151,6 @@ export class RootStore {
     this.mediaQualityStore = new MediaQualityStore(this)
     this.openContactsStore = new OpenContactsStore(this)
     this.iosPinchToZoomStore = new IosPinchToZoomStore(this)
+    this.supportRequestStore = new SupportRequestStore(this)
   }
 }

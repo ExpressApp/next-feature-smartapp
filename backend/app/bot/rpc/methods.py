@@ -1,7 +1,8 @@
 """RPC methods."""
 import asyncio
 import json
-from typing import Any, Callable, Dict
+import zipfile
+from typing import Any, Callable, Dict, List
 from uuid import UUID
 
 from pybotx_smartapp_rpc import (
@@ -250,3 +251,35 @@ async def get_example_file(
 @rpc.method("keycloak-token")
 async def token(smartapp: SmartApp) -> RPCResultResponse[str]:
     return RPCResultResponse(open_id_token.get())
+
+
+@rpc.method("list_archive_files")
+async def list_archive_files(
+    smartapp: SmartApp,
+) -> RPCResultResponse[List[str]]:
+    if not smartapp.event.files:
+        raise RPCErrorExc(
+            RPCError(
+                reason="No files provided",
+                id="FILES_REQUIRED",
+            )
+        )
+
+    async_file = smartapp.event.files[0]
+    file_list: List[str] = []
+
+    async with async_file.open() as tmp_file:
+        await tmp_file.seek(0)  # noqa: WPS432
+
+        try:
+            with zipfile.ZipFile(tmp_file._file) as zf:
+                file_list = zf.namelist()
+        except zipfile.BadZipFile:
+            raise RPCErrorExc(
+                RPCError(
+                    reason="File is not a valid zip archive",
+                    id="INVALID_ARCHIVE",
+                )
+            )
+
+    return RPCResultResponse(file_list)

@@ -49,9 +49,11 @@ const Theme: FC<Props> = ({ children }) => {
   }, [])
 
   return (
-    <ThemeProvider theme={{
-      fontScale: store.fontScale
-    }}>
+    <ThemeProvider
+      theme={{
+        fontScale: store.fontScale,
+      }}
+    >
       <GlobalStyle />
       {children}
     </ThemeProvider>
