@@ -171,6 +171,10 @@ const ClientFeatures: FC = () => {
         <span className="material-icons">close_fullscreen</span>
         Выбор качества сжатия
       </StyledLink>
+      <StyledLink to="file-download">
+        <span className="material-icons">download</span>
+        Скачивание файлов
+      </StyledLink>
       <Subtitle>Прокси</Subtitle>
       <StyledLink to="file-proxy">
         <span className="material-icons">drive_file_move</span>

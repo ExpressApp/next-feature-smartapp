@@ -12,7 +12,7 @@ from pybotx_smartapp_rpc import (
     RPCResultResponse,
     SmartApp,
 )
-from pydantic import Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from app.bot.feature_router import FeatureRouter
 from app.schemas.auth import open_id_token
@@ -29,6 +29,7 @@ from app.services.botx_user_search import (
     UserNotFoundError,
     search_user_on_each_cts,
 )
+from app.services.download_files import build_missing_file_payload, upload_example_files
 
 rpc = FeatureRouter()
 
@@ -283,3 +284,52 @@ async def list_archive_files(
             )
 
     return RPCResultResponse(file_list)
+
+
+class DownloadFileItem(BaseModel):
+    """File that can be downloaded by the SmartApp client."""
+
+    model_config = ConfigDict(populate_by_name=True)
+
+    key: str
+    name: str
+    size: int
+    exists: bool
+    file_data: Dict[str, Any] = Field(alias="file")
+
+
+class DownloadFilesResult(BaseModel):
+    """Files list for the file download feature."""
+
+    files: List[DownloadFileItem]
+
+
+@rpc.method("download_files")
+async def download_files(
+    smartapp: SmartApp,
+) -> RPCResultResponse[DownloadFilesResult]:
+    payloads = await upload_example_files(smartapp)
+
+    download_files_items = [
+        DownloadFileItem(
+            key="file-{0}".format(index),
+            name=payload["file_name"],
+            size=payload["file_size"],
+            exists=True,
+            file_data=payload,
+        )
+        for index, payload in enumerate(payloads, start=1)
+    ]
+
+    missing_payload = build_missing_file_payload(payloads[0])
+    download_files_items.append(
+        DownloadFileItem(
+            key="missing",
+            name=missing_payload["file_name"],
+            size=missing_payload["file_size"],
+            exists=False,
+            file_data=missing_payload,
+        )
+    )
+
+    return RPCResultResponse(DownloadFilesResult(files=download_files_items))

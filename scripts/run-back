@@ -1,3 +1,6 @@
 #!/bin/bash
 
-cd backend && docker-compose up
+# `--build` is required: docker-compose reuses the existing image otherwise and
+# the bot keeps serving old code (for example, new SmartApp RPC methods answer
+# with `METHOD_NOT_FOUND`).
+cd backend && docker-compose up --build

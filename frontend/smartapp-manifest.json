@@ -2,11 +2,11 @@
   "manifestVersion": "1.0.0",
   "smartAppVersion": "",
   "bundlePath": "",
-  "changeLog": "Логи поддержки",
+  "changeLog": "Скачивание файлов",
   "translations": {
     "changeLog": {
-      "ru": "Логи поддержки",
-      "en": "Support logs"
+      "ru": "Скачивание файлов",
+      "en": "File download"
     }
   }
 }

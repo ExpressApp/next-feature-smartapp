@@ -48,6 +48,7 @@ import { MediaQualityStore } from '../modules/media-quality/media-quality-store'
 import { OpenContactsStore } from '../modules/open-contacts/open-contacts.store'
 import { IosPinchToZoomStore } from '../modules/ios-pinch-to-zoom/ios-pinch-to-zoom.store'
 import { SupportRequestStore } from '../modules/support-request/support-request.store'
+import { FileDownloadStore } from '../modules/file-download/file-download.store'
 
 export class RootStore {
   appStore: AppStore
@@ -100,6 +101,7 @@ export class RootStore {
   openContactsStore: OpenContactsStore
   iosPinchToZoomStore: IosPinchToZoomStore
   supportRequestStore: SupportRequestStore
+  fileDownloadStore: FileDownloadStore
 
   constructor() {
     this.appStore = new AppStore(this)
@@ -152,5 +154,6 @@ export class RootStore {
     this.openContactsStore = new OpenContactsStore(this)
     this.iosPinchToZoomStore = new IosPinchToZoomStore(this)
     this.supportRequestStore = new SupportRequestStore(this)
+    this.fileDownloadStore = new FileDownloadStore(this)
   }
 }

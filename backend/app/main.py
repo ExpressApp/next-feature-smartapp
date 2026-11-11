@@ -8,6 +8,7 @@ from fastapi import FastAPI
 from app.api.routers import router
 from app.bot.bot import bot
 from app.bot.smartapp import smartapp
+from app.logger import logger
 from app.resources import strings
 from app.services.static_files import StaticFilesCustomHeaders
 
@@ -16,6 +17,12 @@ from app.services.static_files import StaticFilesCustomHeaders
 async def lifespan(application: FastAPI) -> AsyncGenerator[None, None]:
     await bot.startup()
     bot.state.smartapp_rpc = smartapp
+
+    logger.info(
+        "Registered SmartApp RPC methods: {0}",
+        ", ".join(sorted(smartapp.router.rpc_methods)),
+    )
+
     yield
     await bot.shutdown()
 
